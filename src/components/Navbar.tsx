@@ -1,4 +1,5 @@
 import logo from '/logo.png'
+import { ImWhatsapp } from "react-icons/im";
 
 export default function Navbar() {
   return (
@@ -11,7 +12,7 @@ export default function Navbar() {
       <li>About</li>
       <li>Services</li>
       <li>
-        <div className='contact'>+254-703-599-801</div>
+        <a href="https://wa.me/254703599801" target='_blank' title='WhatsApp Us'><ImWhatsapp /></a>
       </li>
     </ul>
     </div>
