@@ -59,6 +59,9 @@
   left: -3px;
   background-color: purple;
   z-index: 2;
+  background: url("/public/landscape.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .tilt-3 {
