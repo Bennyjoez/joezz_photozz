@@ -101,7 +101,8 @@
 
 .book-session-btn {
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 5px;
+  width: fit-content;
   background-color: #c7421a;
   color: white;
   cursor: pointer;
@@ -129,6 +130,11 @@
   max-width: 400px;
   padding: 10px;
   gap: 10px;
+}
+
+.service p {
+  text-align: left;
+  margin-block: 10px;
 }
 
 .service img {
