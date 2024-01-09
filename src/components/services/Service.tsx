@@ -9,7 +9,7 @@ export default function Service({title, description, img}: Service) {
     <div className="service">
       <img src={img} alt="potrait" />
       <div>
-        <h4>{title}</h4>
+        <h3 className="service-heading">{title}</h3>
         <p>{description}</p>
       </div>
       <button type="button" className="book-session-btn">Book Now</button>

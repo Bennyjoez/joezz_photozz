@@ -19,6 +19,18 @@
   gap: 10px;
 }
 
+.heading {
+  font-size: 2rem;
+  padding-block: 20px;
+  text-decoration: underline;
+  text-decoration-color: #c7421a;
+}
+
+.service-heading {
+  text-decoration: underline;
+  text-decoration-color: #c7421a;
+}
+
 .contact {
   padding: 10px;
   border-radius: 20px;

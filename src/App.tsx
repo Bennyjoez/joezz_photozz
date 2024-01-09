@@ -9,7 +9,7 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <h2>Our Services</h2>
+      <h2 className='heading'>Our Services</h2>
       <Services />
     </>
   )
