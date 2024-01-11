@@ -158,8 +158,6 @@
 }
 
 .service img {
-  flex: 1;
-  height: 60%;
   border-radius: 3px;
   background-color: gray;
 }
