@@ -1,3 +1,5 @@
+import BookBtn from "./BookBtn";
+
 export default function Hero() {
   return (
     <div className='hero'>
@@ -7,7 +9,7 @@ export default function Hero() {
       <div className='tile description'>
         <p>Mark all your events</p>
         <h3>Anywhere, Everywhere, We are there</h3>
-        <button type='button' className='book-session-btn'>Book Session</button>
+        <BookBtn />
       </div>
     </div>
   )
