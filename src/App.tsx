@@ -1,6 +1,7 @@
 import './App.css';
 import Form from './components/Form';
 import Navbar from './components/Navbar'
+import Reviews from './components/Reviews';
 import Home from './pages/Home';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <>
       <Navbar />
       <Home />
+      <Reviews />
       <div>
         <h2 className='heading'>Book A Session</h2>
         <Form />
