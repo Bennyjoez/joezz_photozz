@@ -36,6 +36,16 @@
   gap: 10px;
 }
 
+.nav-options a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-options > *:hover {
+  color: #c7421a;
+  text-decoration: underline;
+}
+
 .heading {
   font-size: 2rem;
   padding-block: 20px;
