@@ -43,7 +43,7 @@
 
 .nav-options > *:hover {
   color: #c7421a;
-  text-decoration: underline;
+  font-weight: bold;
 }
 
 .heading {
@@ -202,6 +202,10 @@
 
 #reviews-container {
   margin: 50px;
+}
+
+.reviews {
+  display: flex;
 }
 
 .review {
