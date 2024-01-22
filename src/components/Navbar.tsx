@@ -10,6 +10,9 @@ export default function Navbar() {
     </div>
     <ul className='nav-options'>
       <li>
+        <Link to='/register' className='register-btn'>Sign Up</Link>
+      </li>
+      <li>
         <Link to='/'>Home</Link>
       </li>
       <li>
