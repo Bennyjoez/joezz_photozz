@@ -9,6 +9,8 @@ import Error from './pages/Error.tsx';
 import './index.css'
 import About from './pages/About.tsx';
 import Services from './pages/Services.tsx';
+import Register from './components/authentication/Register.tsx';
+import Login from './components/authentication/Login.tsx';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
   {
     path: 'services',
     element: <Services />
+  },
+  {
+    path: 'register',
+    element: <Register />
+  },
+  {
+    path: 'login',
+    element: <Login />
   }
 ]);
 

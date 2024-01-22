@@ -219,6 +219,13 @@
   border-radius: 50%;
 }
 
+.signup-form {
+  max-width: 500px;
+  margin: 50% auto;
+  transform: translateY(-80%);
+  box-shadow: 0 2px 5px gray;
+}
+
 @media only screen and (min-width: 768px) {
   .description {
     font-size: 2rem;
