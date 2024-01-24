@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -70,6 +71,7 @@ function Register() {
           <input type="password" name="password" id="password" value={user.password} onChange={handleInput} />
           <button type="submit" className='book-session-btn'>Register</button>
         </div>
+        <Link to='/login' className='register-btn'>Login</Link>
       </form>
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
     </>
