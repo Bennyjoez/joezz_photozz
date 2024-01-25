@@ -54,7 +54,7 @@ function Login() {
   return (
     <>
       <form onSubmit={handleSubmit} id='form-container' className='signup-form' >
-        <h2>Login</h2>
+        <h2 className='heading'>Login</h2>
         <div className='flex-form'>
           <label htmlFor="email">Email</label>
           <input type="email" name="email" id="email" onChange={handleInput} />

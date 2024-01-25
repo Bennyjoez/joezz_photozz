@@ -26,6 +26,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
+  background-color: #c7421a;
 }
 
 .nav-options {
@@ -49,9 +50,12 @@
 .heading, .navbar {
   font-size: 1.8rem;
   padding: 10px 20px;
-  color: aliceblue;
-  background-color: #c7421a;
-  box-shadow: inset 4px 0 15px green;
+}
+
+.heading{
+  display: grid;
+  place-items: center;
+  margin-top: 50px;
 }
 
 .service-heading {
@@ -152,13 +156,14 @@
   gap: 20px;
   align-items: center;
   justify-content: center;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .service {
   min-height: 300px;
   display: flex;
   flex-direction: column;
-  max-width: 400px;
   padding: 10px;
   gap: 10px;
   font-family: "Courgette", cursive;
@@ -204,8 +209,11 @@
 }
 
 #reviews-container {
-  margin: 50px auto;
-  max-width: 1200px;
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 40px;
+  background-color: #efefef;
+  border-radius: 20px;
 }
 
 .reviews {
@@ -219,6 +227,8 @@
 .review {
   padding: 20px;
   border-radius: 4px;
+  background-color: aliceblue;
+  border-radius: 10px;
   box-shadow: 0 4px 5px rgb(221, 221, 237);
 }
 

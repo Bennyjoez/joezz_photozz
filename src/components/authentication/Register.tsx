@@ -59,7 +59,7 @@ function Register() {
   return (
     <>
       <form onSubmit={handleSubmit} id='form-container' className='signup-form'>
-        <h2>Register</h2>
+        <h2 className='heading'>Register</h2>
         <div className='flex-form'>
           <label htmlFor="name">Full Name</label>
           <input type="text" name="name" id="name" value={user.name} onChange={handleInput} />

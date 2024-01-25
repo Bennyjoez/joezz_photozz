@@ -35,7 +35,7 @@ export default function Form() {
         <label htmlFor="contact">Shoot Location</label>
         <input type="text" name="location" id="location" placeholder="Where's the shoot" onChange={handleInput} />
         <label htmlFor="message">Message:</label>
-        <textarea name="message" id="message" cols="30" rows="10" placeholder='What would you like us to know about your booking...' onChange={handleInput}></textarea>
+        <textarea name="message" id="message" placeholder='What would you like us to know about your booking...' onChange={handleInput}></textarea>
 
         <button type="submit" className='book-session-btn'>Submit Booking</button>
       </div>
