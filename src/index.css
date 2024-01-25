@@ -42,7 +42,7 @@
 }
 
 .nav-options > *:hover {
-  color: blue;
+  color: rgb(50, 50, 244);
   font-weight: bold;
 }
 
@@ -213,6 +213,7 @@
   justify-content: center;
   gap: 20px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .review {

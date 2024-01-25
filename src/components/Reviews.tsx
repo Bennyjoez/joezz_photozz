@@ -26,6 +26,7 @@ export default function Reviews() {
           </div>
         </div>
       </div>
+      <button className="book-session-btn ">Add Review</button>
     </section>
   )
 }
