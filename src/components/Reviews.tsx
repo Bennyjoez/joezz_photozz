@@ -3,7 +3,6 @@ import profile from "/profile.png"
 export default function Reviews() {
   return (
     <section id='reviews-container'>
-      <h2 className="heading">Reviews</h2>
       <div className="reviews">
         <div className='review'>
           <img src={profile} className="review-profile" alt="reviewer" />

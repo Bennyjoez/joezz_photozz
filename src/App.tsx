@@ -1,22 +1,14 @@
-import './App.css';
-import Form from './components/Form';
-import Navbar from './components/Navbar'
-import Reviews from './components/Reviews';
-import Home from './pages/Home';
+// app.tsx
+import React from 'react';
+import Layout from './Layout';
+import { Outlet } from 'react-router-dom';
 
-function App() {
-
+const App: React.FC = () => {
   return (
-    <>
-      <Navbar />
-      <Home />
-      <Reviews />
-      <div>
-        <h2 className='heading'>Book A Session</h2>
-        <Form />
-      </div>
-    </>
-  )
-}
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
+};
 
-export default App
+export default App;

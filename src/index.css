@@ -26,7 +26,6 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding-right: 20px;
 }
 
 .nav-options {
@@ -34,6 +33,7 @@
   align-items: center;
   list-style: none;
   gap: 10px;
+  font-size: 1.5rem;
 }
 
 .nav-options a {
@@ -42,15 +42,16 @@
 }
 
 .nav-options > *:hover {
-  color: #c7421a;
+  color: blue;
   font-weight: bold;
 }
 
-.heading {
-  font-size: 2rem;
-  padding-block: 20px;
-  text-decoration: underline;
-  text-decoration-color: #c7421a;
+.heading, .navbar {
+  font-size: 1.8rem;
+  padding: 10px 20px;
+  color: aliceblue;
+  background-color: #c7421a;
+  box-shadow: inset 4px 0 15px green;
 }
 
 .service-heading {
@@ -203,13 +204,15 @@
 }
 
 #reviews-container {
-  margin: 50px;
+  margin: 50px auto;
+  max-width: 1200px;
 }
 
 .reviews {
   display: flex;
   justify-content: center;
   gap: 20px;
+  text-align: center;
 }
 
 .review {

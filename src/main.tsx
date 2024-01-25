@@ -11,29 +11,21 @@ import About from './pages/About.tsx';
 import Services from './pages/Services.tsx';
 import Register from './components/authentication/Register.tsx';
 import Login from './components/authentication/Login.tsx';
+import Home from './pages/Home.tsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <Error />,
+    children: [
+      { path: '/', element: <Home /> },
+      { path: 'about', element: <About /> },
+      { path: 'services', element: <Services /> },
+      { path: 'register', element: <Register /> },
+      { path: 'login', element: <Login /> },
+    ],
   },
-  {
-    path: "about",
-    element: <About />
-  },
-  {
-    path: 'services',
-    element: <Services />
-  },
-  {
-    path: 'register',
-    element: <Register />
-  },
-  {
-    path: 'login',
-    element: <Login />
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
