@@ -26,7 +26,6 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #c7421a;
 }
 
 .nav-options {
@@ -83,6 +82,23 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+}
+
+.animated-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards 0.5s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
 }
 
 .tile {
