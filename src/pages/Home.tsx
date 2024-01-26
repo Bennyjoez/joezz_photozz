@@ -11,10 +11,8 @@ export default function Home() {
       <Services />
       <h2 className='heading'>Reviews</h2>
       <Reviews />
-      <div>
-        <h2 className='heading'>Book A Session</h2>
-        <Form />
-      </div>
+      <h2 className='heading'>Book A Session</h2>
+      <Form />
     </div>
   )
 }

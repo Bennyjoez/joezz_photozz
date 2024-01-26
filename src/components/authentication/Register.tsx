@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import formImage from '../../../public/form.jpg';
 
 function Register() {
   const [user, setUser] = useState({
@@ -57,8 +58,11 @@ function Register() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} id='form-container' className='signup-form'>
+    <section className='form-container'>
+      <div className='placeholder-image'>
+        <img src={formImage} alt="form image" />
+      </div>
+      <form onSubmit={handleSubmit} className='signup-form'>
         <h2 className='heading'>Register</h2>
         <div className='flex-form'>
           <label htmlFor="name">Full Name</label>
@@ -74,7 +78,7 @@ function Register() {
         <Link to='/login' className='register-btn'>Login</Link>
       </form>
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-    </>
+    </section>
   )
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import bookImage from '../../public/book.jpg';
 
 export default function Form() {
   const [details, setDetails] = useState({
@@ -22,23 +23,28 @@ export default function Form() {
 
 
   return (
-    <form id='form-container' onSubmit={handleSubmit}>
-      <div className='flex-form'>
-        <label htmlFor="name">Name:</label>
-        <input type="text" name="name" id="name" placeholder='Your Full Name' onChange={handleInput} />
-        <label htmlFor="email">Email:</label>
-        <input type="email" name="email" id="email" placeholder='Your Email' onChange={handleInput} />
-        <label htmlFor="contact">WhatsApp Contact:</label>
-        <input type="tel" name="contact" id="contact" placeholder='Your WhatsApp Contact' onChange={handleInput} />
-        <label htmlFor="event">Event:</label>
-        <input type="text" name="event" id="event" placeholder='What is the occasion' onChange={handleInput} />
-        <label htmlFor="contact">Shoot Location</label>
-        <input type="text" name="location" id="location" placeholder="Where's the shoot" onChange={handleInput} />
-        <label htmlFor="message">Message:</label>
-        <textarea name="message" id="message" placeholder='What would you like us to know about your booking...' onChange={handleInput}></textarea>
-
-        <button type="submit" className='book-session-btn'>Submit Booking</button>
+    <section className="bookings-form-container">
+      <div className='placeholder-image'>
+        <img src={bookImage} alt="form image" />
       </div>
-    </form>
+      <form onSubmit={handleSubmit} className='signup-form'>
+        <div className='flex-form'>
+          <label htmlFor="name">Name:</label>
+          <input type="text" name="name" id="name" placeholder='Your Full Name' onChange={handleInput} />
+          <label htmlFor="email">Email:</label>
+          <input type="email" name="email" id="email" placeholder='Your Email' onChange={handleInput} />
+          <label htmlFor="contact">WhatsApp Contact:</label>
+          <input type="tel" name="contact" id="contact" placeholder='Your WhatsApp Contact' onChange={handleInput} />
+          <label htmlFor="event">Event:</label>
+          <input type="text" name="event" id="event" placeholder='What is the occasion' onChange={handleInput} />
+          <label htmlFor="contact">Shoot Location</label>
+          <input type="text" name="location" id="location" placeholder="Where's the shoot" onChange={handleInput} />
+          <label htmlFor="message">Message:</label>
+          <textarea name="message" id="message" placeholder='What would you like us to know about your booking...' onChange={handleInput}></textarea>
+
+          <button type="submit" className='book-session-btn'>Submit Booking</button>
+        </div>
+      </form>
+    </section>
   )
 }

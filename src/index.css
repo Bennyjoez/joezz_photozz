@@ -202,10 +202,48 @@
   width: 100%;
 }
 
-#form-container {
+.bookings-form-container {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.bookings-form-container .flex-form {
+  width: 100%;
+}
+
+.form-container {
   background-color: whitesmoke;
   border-radius: 20px;
   padding: 20px;
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: min(800px, 70vh);
+  box-shadow: 0 2px 5px gray;
+}
+
+.form-container input,
+.bookings-form-container input, textarea {
+  box-shadow: 0 1px 2px gray;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.form-container label {
+  text-align: left;
+}
+
+.form-container textarea {
+  padding: 20px;
+}
+
+.form-container .heading {
+  margin-top: 10px;
 }
 
 .flex-form {
@@ -213,22 +251,11 @@
   flex-direction: column;
   gap: 10px;
   width: 80%;
-  max-width: 960px;
   margin: 0 auto;
 }
 
-#form-container input, textarea {
-  box-shadow: 0 1px 2px gray;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-#form-container label {
-  text-align: left;
-}
-
-#form-container textarea {
-  padding: 20px;
+.register-btn {
+  margin: 0 auto;
 }
 
 #reviews-container {
@@ -262,19 +289,23 @@
 }
 
 .signup-form {
-  max-width: 500px;
-  margin: 20px auto;
-  box-shadow: 0 2px 5px gray;
+  width: 100%;
+  display: grid;
+  place-items: center;
 }
 
-@media only screen and (min-width: 768px) {
-  .description {
-    font-size: 2rem;
-  }
+.placeholder-image {
+  width: 400px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  height: 30%;
+  overflow: hidden;
+  background-color: #c7421a;
+}
 
-  .description p {
-    font-size: 42px;
-  }
+.placeholder-image img {
+  width: 100%;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -293,6 +324,14 @@
     font-size: 1.2rem;
   }
 
+  .description {
+    font-size: 2rem;
+  }
+
+  .description p {
+    font-size: 42px;
+  }
+
   .description h3 {
     width: 90%;
   }
@@ -308,5 +347,18 @@
 
   .reviews {
     flex-direction: row;
+  }
+
+  .signup-form {
+    width: 500px;
+  }
+
+  .form-container {
+    flex-direction: row;
+    height: fit-content;
+  }
+
+  .placeholder-image img {
+    
   }
 }
