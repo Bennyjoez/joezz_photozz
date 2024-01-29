@@ -260,6 +260,9 @@
 
 #about {
   display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px;
   gap: 20px;
   max-width: 1280px;
   margin: 0 auto;
@@ -356,6 +359,11 @@
 
   .service {
     width: 30%;
+  }
+
+  #about {
+    flex-direction: row;
+    text-align: start;
   }
 
   .reviews {
