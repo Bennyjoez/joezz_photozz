@@ -1,4 +1,3 @@
-import React from 'react'
 import shootImage from '../../public/ladyshoot.jpeg';
 
 export default function About() {
