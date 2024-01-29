@@ -3,8 +3,8 @@ import shootImage from '../../public/ladyshoot.jpeg';
 
 export default function About() {
   return (
-    <section>
-      <aside>At Joezz Photography, we believe that every moment tells a unique story. Through the lens, we capture the beauty, emotion, and authenticity of your special occasions, turning them into timeless memories.
+    <section id='about'>
+      <aside className='about-description'>At Joezz Photography, we believe that every moment tells a unique story. Through the lens, we capture the beauty, emotion, and authenticity of your special occasions, turning them into timeless memories.
 
       Our team of passionate photographers is dedicated to creating a comfortable and enjoyable experience for our clients. We go beyond capturing images; we strive to narrate your story with creativity and artistry.
 
@@ -12,7 +12,7 @@ export default function About() {
 
       Explore our portfolio, and let the images speak for themselves. We look forward to being your trusted storytellers, turning your moments into cherished memories.
 
-      Thank you for considering [Your Photography Studio Name] for your photographic needs. 🌟
+      <p>Thank you for considering Joezz Photography for your photographic needs 🌟</p>
       </aside>
       <aside>
         <div>
