@@ -23,7 +23,7 @@ export default function Form() {
 
 
   return (
-    <section className="bookings-form-container">
+    <section id='book-session' className="bookings-form-container">
       <div className='placeholder-image'>
         <img src={bookImage} alt="form image" />
       </div>
