@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import bookImage from '../../public/book.jpg';
+import { useState } from 'react'
 
 export default function Form() {
   const [details, setDetails] = useState({
@@ -24,9 +23,6 @@ export default function Form() {
 
   return (
     <section id='book-session' className="bookings-form-container">
-      <div className='placeholder-image'>
-        <img src={bookImage} alt="form image" />
-      </div>
       <form onSubmit={handleSubmit} className='signup-form'>
         <div className='flex-form'>
           <label htmlFor="name">Name:</label>

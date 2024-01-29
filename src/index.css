@@ -207,12 +207,20 @@
 }
 
 .bookings-form-container {
-  background-color: whitesmoke;
+  background: url('../public/book.jpg');
+  background-size: cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 10px;
+  padding: 40px;
+}
+
+.bookings-form-container .signup-form {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 20px;
 }
 
 .bookings-form-container .flex-form {
@@ -322,12 +330,10 @@
 
 .placeholder-image {
   width: 400px;
-  height: 100%;
   display: grid;
   place-items: center;
   height: 30%;
   overflow: hidden;
-  background-color: #c7421a;
 }
 
 .placeholder-image img {
