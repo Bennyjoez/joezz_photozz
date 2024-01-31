@@ -189,6 +189,7 @@
   align-items: center;
   text-align: center;
   background-color: rgba(102, 51, 153, 0.2);
+  box-shadow: 0px 0px 4px 6px rgb(190 190 231);
   border-radius: 10px;
   padding: 30px;
   gap: 10px;
@@ -288,6 +289,7 @@
 
 #about img {
   width: min(400px, 100%);
+  border-radius: 5px;
 }
 
 #reviews-container {
@@ -314,7 +316,7 @@
   border-radius: 4px;
   background-color: rgba(102, 51, 153, 0.2);
   border-radius: 10px;
-  box-shadow: 0 4px 5px rgb(221, 221, 237);
+  box-shadow: 8px 10px 6px 1px rgb(190 190 231);
 }
 
 .review-profile {
