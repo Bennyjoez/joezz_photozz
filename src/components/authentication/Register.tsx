@@ -75,7 +75,9 @@ function Register() {
           <input type="password" name="password" id="password" value={user.password} onChange={handleInput} />
           <button type="submit" className='book-session-btn'>Register</button>
         </div>
-        <Link to='/login' className='register-btn'>Login</Link>
+        <p className='register-btn'>
+          You already have an account? <Link to='/login'>Login</Link>
+        </p>
       </form>
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
     </section>

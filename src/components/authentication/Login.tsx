@@ -66,8 +66,8 @@ function Login() {
           <input type="password" name="password" id="password" onChange={handleInput} />
           <button type="submit" className='book-session-btn'>Login</button>
         </div>
-        <p>
-          Don't have an account? <Link to='/register' className='register-btn'>Sign Up</Link>
+        <p className='register-btn'>
+          Don't have an account? <Link to='/register'>Sign Up</Link>
         </p>
       </form>
     </section>
