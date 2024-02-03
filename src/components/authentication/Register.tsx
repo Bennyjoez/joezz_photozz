@@ -34,21 +34,15 @@ function Register() {
 
       if (!response.ok) {
         const data = await response.json();
-        if (response.status === 409) {
-          // User with the same credentials already exists
-          toast.error(data.error);
-        } else {
-          // Handle other errors
-          toast.error('Registration failed. Please try again later.');
-        }
-        return;
+
+        throw new Error(`${JSON.stringify(data.errors.message)}`);
       }
 
       // registration was successful
       const data = await response.json();
       toast.success(data.message);
-    } catch (err) {
-      toast.error('An unexpected error occurred. Please try again later.')}
+    } catch (err: unknown) {
+      toast.error(`Registration failed: ${err}`)}
   };
   
 
@@ -66,13 +60,13 @@ function Register() {
         <h2 className='heading'>Register</h2>
         <div className='flex-form'>
           <label htmlFor="name">Full Name</label>
-          <input type="text" name="name" id="name" value={user.name} onChange={handleInput} />
+          <input type="text" name="name" id="name" value={user.name} onChange={handleInput} required placeholder='Name' />
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" value={user.email} onChange={handleInput} />
+          <input type="email" name="email" id="email" value={user.email} onChange={handleInput} required placeholder='Email' />
           <label htmlFor="contact">Contact</label>
-          <input type="tel" name="contact" id="contact" value={user.contact} onChange={handleInput} />
+          <input type="tel" name="contact" id="contact" value={user.contact} onChange={handleInput} required placeholder='Contact' />
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" value={user.password} onChange={handleInput} />
+          <input type="password" name="password" id="password" value={user.password} onChange={handleInput} minLength={6} required placeholder='Password' />
           <button type="submit" className='book-session-btn'>Register</button>
         </div>
         <p className='register-btn'>

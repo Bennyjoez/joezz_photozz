@@ -61,9 +61,9 @@ function Login() {
         <h2 className='heading'>Login</h2>
         <div className='flex-form'>
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" onChange={handleInput} />
+          <input type="email" name="email" id="email" onChange={handleInput} required placeholder='Email' />
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" onChange={handleInput} />
+          <input type="password" name="password" id="password" onChange={handleInput} required placeholder='Password' />
           <button type="submit" className='book-session-btn'>Login</button>
         </div>
         <p className='register-btn'>
