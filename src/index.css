@@ -216,6 +216,7 @@
   align-items: center;
   gap: 20px;
   padding: 40px;
+  position: relative;
 }
 
 .bookings-form-container .signup-form {
@@ -279,6 +280,8 @@
   gap: 20px;
   max-width: 1280px;
   margin: 0 auto;
+  padding-bottom: 160px;
+  position: relative;
 }
 
 .about-description {
@@ -328,6 +331,7 @@
   width: 100%;
   display: grid;
   place-items: center;
+  z-index: 10;
 }
 
 .placeholder-image {
@@ -400,4 +404,48 @@
     flex-direction: row;
     height: fit-content;
   }
+}
+
+
+
+
+.custom-shape-divider-top-1708010965 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1708010965 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 160px;
+}
+
+.custom-shape-divider-top-1708010965 .shape-fill {
+  fill: #81a52d;
+}
+
+.custom-shape-divider-bottom-1708012441 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1708012441 svg {
+  position: relative;
+  display: block;
+  width: calc(185% + 1.3px);
+  height: 160px;
+}
+
+.custom-shape-divider-bottom-1708012441 .shape-fill {
+  fill: #E0F5CC;
 }
