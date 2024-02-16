@@ -1,4 +1,4 @@
-import Form from "../components/Form";
+import ContactForm from "../components/ContactForm";
 import Hero from "../components/Hero";
 import Reviews from "../components/Reviews";
 import Services from "../components/services/Services";
@@ -14,8 +14,8 @@ export default function Home() {
       <About />
       <h2 className='heading'>Reviews</h2>
       <Reviews />
-      <h2 className='heading'>Book A Session</h2>
-      <Form />
+      <h2 className='heading'>Contact Us</h2>
+      <ContactForm />
     </div>
   )
 }
