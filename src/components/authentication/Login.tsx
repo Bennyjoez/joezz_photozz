@@ -13,7 +13,7 @@ function Login() {
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const {email, password} = user;
-    const url = await import.meta.env.VITE_JOEZ_PHOTOZZ_API_URL + '/users/login';
+    const url = await import.meta.env.VITE_JOEZ_PHOTOZZ_BACKEND + '/users/login';
 
     try {
       const response = await fetch(url, {

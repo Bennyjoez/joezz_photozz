@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function Form() {
   const [details, setDetails] = useState({
@@ -7,8 +9,37 @@ export default function Form() {
     message: ''
   });
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
+
+    // send request to the backend
+    const url = `${import.meta.env.VITE_JOEZ_PHOTOZZ_BACKEND}/api/v1/messages`;
+
+    try {
+      const res = await axios.post(url, details);
+      if(res.status >= 200 && res.status < 300) {
+        // message is saved
+        setDetails({name: '', email: '', message: ''});
+        toast.success('Message sent!')
+      }
+    } catch (error) {
+      const { status, errors } = error.response.data;
+      console.log(status)
+      const errorKeys = Object.keys(errors)
+      errorKeys.forEach(er => {
+        const message = `🔻${er}: ${errors[er].message} \n` 
+        toast.error(`${message}`)
+        const target = document.querySelector(`#${er}`)
+        if(target) {
+          target.style.backgroundColor = '#ff9d9d';
+          setTimeout(() => {
+            target.style.backgroundColor = 'white';
+          }, 6000)
+        }
+      });
+
+    }
+
   };
 
   const handleInput = (e: { target: { name: string; value: string; }; }) => {
