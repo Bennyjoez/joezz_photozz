@@ -22,12 +22,11 @@ export default function Form() {
         setDetails({name: '', email: '', message: ''});
         toast.success('Message sent!')
       }
-    } catch (error) {
+    } catch (error: unknown) {
       const { status, errors } = error.response.data;
-      console.log(status)
       const errorKeys = Object.keys(errors)
       errorKeys.forEach(er => {
-        const message = `🔻${er}: ${errors[er].message} \n` 
+        const message = `🔻${er}: ${errors[er].message} ${status}` 
         toast.error(`${message}`)
         const target = document.querySelector(`#${er}`)
         if(target) {
