@@ -16,7 +16,7 @@ function Register() {
     e.preventDefault();
     const { name, email, contact, password } = user;
   
-    const url = await import.meta.env.VITE_JOEZ_PHOTOZZ_API_URL + '/users/register';
+    const url = await import.meta.env.VITE_JOEZ_PHOTOZZ_BACKEND + '/users/register';
     try {
       const response = await fetch(url, {
         method: 'POST',

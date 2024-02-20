@@ -13,7 +13,7 @@ export default function Form() {
     e.preventDefault();
 
     // send request to the backend
-    const url = `${import.meta.env.VITE_JOEZ_PHOTOZZ_BACKEND}/api/v1/messages`;
+    const url = `${import.meta.env.VITE_JOEZ_PHOTOZZ_BACKEND}/messages`;
 
     try {
       const res = await axios.post(url, details);
@@ -23,6 +23,7 @@ export default function Form() {
         toast.success('Message sent!')
       }
     } catch (error: unknown) {
+      // console.log(error)
       const { status, errors } = error.response.data;
       const errorKeys = Object.keys(errors)
       errorKeys.forEach(er => {
