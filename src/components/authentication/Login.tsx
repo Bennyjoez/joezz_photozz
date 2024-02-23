@@ -30,9 +30,9 @@ function Login() {
 
       if (!response.ok) {
         const data = await response.json();
-        if (response.status === 400) {
+        if (response.status === 400 || response.status === 401) {
           // wrong password or email
-          toast.error(data.error);
+          toast.error(data.error.message);
         } else {
           // Handle other errors
           toast.error('Login failed. Please try again later.');
