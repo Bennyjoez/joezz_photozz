@@ -73,7 +73,6 @@ function Register() {
           You already have an account? <Link to='/login'>Login</Link>
         </p>
       </form>
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
     </section>
   )
 }
