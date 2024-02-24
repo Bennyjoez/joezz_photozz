@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import formImage from '../../../public/form.jpg';
-import { saveUser } from '../../utils/manageUser';
+import { useAppDispatch } from '../../app/hooks';
+import { saveUser } from '../../Features/user/userSlice';
 
 function Login() {
+  const dispatch = useAppDispatch();
   const [user, setUser] = useState({
     email: '',
     password: ''
@@ -44,7 +46,7 @@ function Login() {
       // login was successful
       toast.success('Login Successful!');
       const { user } =  await response.json();
-      saveUser(user);
+      dispatch(saveUser(user));
     } catch (err) {
       toast.error('An unexpected error occurred. Please try again later.')
     }
