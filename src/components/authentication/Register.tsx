@@ -59,7 +59,9 @@ function Register() {
   return (
     <>
       {
-        loggedInUser ? <Navigate to="/" replace={true} />
+        loggedInUser 
+        ?
+        <Navigate to="/" replace={true} />
         :
         <section className='form-container'>
           <div className='placeholder-image'>
