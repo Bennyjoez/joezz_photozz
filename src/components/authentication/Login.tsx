@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import formImage from '../../../public/form.jpg';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { saveUser } from '../../Features/user/userSlice';
 
 function Login() {
   const dispatch = useAppDispatch();
+  const loggedInUser = useAppSelector((state) => state.user.name);
   const [user, setUser] = useState({
     email: '',
     password: ''
@@ -58,24 +59,30 @@ function Login() {
   };
 
   return (
-    <section className='form-container'>
-      <div className='placeholder-image'>
-        <img src={formImage} alt="form image" />
-      </div>
-      <form onSubmit={handleSubmit} className='signup-form' >
-        <h2 className='heading'>Login</h2>
-        <div className='flex-form'>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" onChange={handleInput} required placeholder='Email' />
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" onChange={handleInput} required placeholder='Password' />
-          <button type="submit" className='book-session-btn'>Login</button>
+    <>
+      {
+      loggedInUser ? <Navigate to='/' replace={true} />
+      :
+        <section className='form-container'>
+        <div className='placeholder-image'>
+          <img src={formImage} alt="form image" />
         </div>
-        <p className='register-btn'>
-          Don't have an account? <Link to='/register'>Sign Up</Link>
-        </p>
-      </form>
-    </section>
+        <form onSubmit={handleSubmit} className='signup-form' >
+          <h2 className='heading'>Login</h2>
+          <div className='flex-form'>
+            <label htmlFor="email">Email</label>
+            <input type="email" name="email" id="email" onChange={handleInput} required placeholder='Email' />
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" id="password" onChange={handleInput} required placeholder='Password' />
+            <button type="submit" className='book-session-btn'>Login</button>
+          </div>
+          <p className='register-btn'>
+            Don't have an account? <Link to='/register'>Sign Up</Link>
+          </p>
+        </form>
+      </section>
+    }
+    </>
   )
 }
 
