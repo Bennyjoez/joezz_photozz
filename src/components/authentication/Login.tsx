@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import formImage from '../../../public/form.jpg';
+import { saveUser } from '../../utils/manageUser';
 
 function Login() {
   const [user, setUser] = useState({
@@ -42,6 +43,8 @@ function Login() {
 
       // login was successful
       toast.success('Login Successful!');
+      const { user } =  await response.json();
+      saveUser(user);
     } catch (err) {
       toast.error('An unexpected error occurred. Please try again later.')
     }
