@@ -24,7 +24,7 @@ export default function Navbar() {
         <Link to='services'>Services</Link>
       </li>
       <li>
-        <a href="https://wa.me/254703599801" target='_blank' title='WhatsApp Us'><ImWhatsapp /></a>
+        <Link to="https://wa.me/254703599801" target='_blank' title='WhatsApp Us'><ImWhatsapp /></Link>
       </li>
     </ul>
     {userName ?
