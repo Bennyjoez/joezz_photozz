@@ -1,18 +1,20 @@
 import { useState } from 'react'
+import { useAppDispatch } from '../app/hooks';
+import { closePopup } from '../Features/modal/modalSlice';
 
 export default function BookingForm() {
+  const dispatch = useAppDispatch();
+
   const [details, setDetails] = useState({
-    name: '',
-    email: '',
-    contact: '',
     event: '',
     location: '',
-    message: ''
+    message: '',
+    date: ''
   });
 
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    console.log(details.name, details.email, details.contact, details.event, details.location, details.message);
+    console.log( details.event, details.location, details.message);
   };
 
   const handleInput = (e: { target: { name: string; value: string; }; }) => {
@@ -20,29 +22,32 @@ export default function BookingForm() {
     setDetails((prev) => ({ ...prev, [target]: e.target.value }));
   };
 
+  const onCloseButtonClick = () => {
+    dispatch(closePopup());
+  }
+
 
   return (
     <section className="popup-form">
       <div className='bookings-form-container'>
         <form onSubmit={handleSubmit} className='signup-form'>
           <div className='flex-form'>
-            <label htmlFor="name">Name:</label>
-            <input type="text" name="name" id="name" placeholder='Your Full Name' onChange={handleInput} />
-            <label htmlFor="email">Email:</label>
-            <input type="email" name="email" id="email" placeholder='Your Email' onChange={handleInput} />
-            <label htmlFor="contact">WhatsApp Contact:</label>
-            <input type="tel" name="contact" id="contact" placeholder='Your WhatsApp Contact' onChange={handleInput} />
-            <label htmlFor="event">Event:</label>
-            <input type="text" name="event" id="event" placeholder='What is the occasion' onChange={handleInput} />
+            <label htmlFor="event">Event</label>
+            <input type="text" name="event" id="event" placeholder='What is the occasion?' onChange={handleInput} />
             <label htmlFor="contact">Shoot Location</label>
-            <input type="text" name="location" id="location" placeholder="Where's the shoot" onChange={handleInput} />
-            <label htmlFor="message">Message:</label>
+            <input type="text" name="location" id="location" placeholder="Where's the shoot?" onChange={handleInput} />
+            <label htmlFor="date">When</label>
+            <input type="text" name="date" id="date" placeholder="When is the shoot?" onChange={handleInput} />
+            <label htmlFor="message">Message</label>
             <textarea name="message" id="message" placeholder='What would you like us to know about your booking...' onChange={handleInput}></textarea>
 
             <button type="submit" className='book-session-btn'>Submit Booking</button>
           </div>
         </form>
       </div>
+      <span className="modal-close" onClick={onCloseButtonClick}>
+          &#10005; {/* HTML code multiplication sign */}
+        </span>
     </section>
   )
 }
