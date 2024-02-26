@@ -15,6 +15,7 @@ import Services from './pages/Services.tsx';
 import Register from './components/authentication/Register.tsx';
 import Login from './components/authentication/Login.tsx';
 import Home from './pages/Home.tsx';
+import Profile from './pages/Profile.tsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: 'services', element: <Services /> },
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
+      { path: 'profile', element: <Profile /> },
     ],
   },
 ]);
