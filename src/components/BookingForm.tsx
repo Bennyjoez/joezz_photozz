@@ -3,19 +3,26 @@ import { useAppDispatch } from '../app/hooks';
 import { closePopup } from '../Features/modal/modalSlice';
 import DateSelector from './DatePicker';
 
+interface DetailsState {
+  event: string;
+  location: string;
+  message: string;
+  date: Date | null;
+}
+
 export default function BookingForm() {
   const dispatch = useAppDispatch();
 
-  const [details, setDetails] = useState({
+  const [details, setDetails] = useState<DetailsState>({
     event: '',
     location: '',
     message: '',
-    date: ''
+    date: null
   });
 
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    console.log( details.event, details.location, details.message);
+    console.log( details.event, details.location, details.message, details.date);
   };
 
   const handleInput = (e: { target: { name: string; value: string; }; }) => {
@@ -39,7 +46,7 @@ export default function BookingForm() {
             <input type="text" name="location" id="location" placeholder="Where's the shoot?" onChange={handleInput} />
             <label htmlFor="date">Select a date</label>
             {/* <input type="text" name="date" id="date" placeholder="When is the shoot?" onChange={handleInput} /> */}
-            <DateSelector />
+            <DateSelector setDetails={setDetails} />
             <label htmlFor="message">Message</label>
             <textarea name="message" id="message" placeholder='What would you like us to know about your booking...' onChange={handleInput}></textarea>
 

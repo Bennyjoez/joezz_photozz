@@ -2,11 +2,23 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DateSelector: React.FC = () => {
+interface DateSelectorProps {
+  setDetails: React.Dispatch<React.SetStateAction<DetailsState>>;
+}
+
+interface DetailsState {
+  event: string;
+  location: string,
+  message: string,
+  date: Date | null;
+}
+
+const DateSelector: React.FC<DateSelectorProps> = ({ setDetails }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const handleChange = (date: Date | null) => {
     setSelectedDate(date);
+    setDetails((prev) => ({ ...prev, date: date }));
   };
 
   const today = new Date();
