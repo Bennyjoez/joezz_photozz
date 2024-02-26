@@ -13,7 +13,7 @@ export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    openPopup: (state) => {
+    showPopup: (state) => {
       state.showPopup = true
     },
     closePopup: (state) => {
@@ -22,7 +22,7 @@ export const modalSlice = createSlice({
   }
 });
 
-export const { openPopup, closePopup } = modalSlice.actions;
+export const { showPopup, closePopup } = modalSlice.actions;
 
 export default modalSlice.reducer;
 
