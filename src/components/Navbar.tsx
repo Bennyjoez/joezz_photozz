@@ -2,6 +2,7 @@ import logo from '/logo.png'
 import { ImWhatsapp } from "react-icons/im";
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../app/hooks';
+import { CgProfile } from "react-icons/cg";
 
 export default function Navbar() {
   const userName = useAppSelector((state) => state.user.name);
@@ -27,7 +28,10 @@ export default function Navbar() {
       </li>
     </ul>
     {userName ?
-      <div>Welcome, {userName.toUpperCase()}</div>
+      <div className='profile-link'>
+        <span>Welcome, {userName.toUpperCase()}</span>
+        <Link to='/profile' className='link-btn'><CgProfile /></Link>
+      </div>
       : 
       <div>
         <Link to='/register' className='register-btn'>Sign Up</Link>

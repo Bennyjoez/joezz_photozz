@@ -26,6 +26,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .nav-options {
@@ -45,6 +46,17 @@
 .nav-options > *:hover {
   color: rgb(50, 50, 244);
   font-weight: bold;
+}
+
+.profile-link {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  height: fit-content;
+}
+
+.link-btn {
+  color: inherit;
 }
 
 .heading, .navbar {
