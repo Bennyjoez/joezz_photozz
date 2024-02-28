@@ -6,13 +6,15 @@ interface userState {
   name: string,
   email: string,
   contact: string,
+  userToken: string
 }
 
 const initialState: userState = {
   id: '',
   name: '',
   email: '',
-  contact: ''
+  contact: '',
+  userToken: ''
 }
 
 // create slice
@@ -26,12 +28,14 @@ export const userSlice = createSlice({
       state.name = action.payload.name;
       state.email = action.payload.email;
       state.contact = action.payload.contact;
+      state.userToken = action.payload.userToken
     },
     logOutUser: (state) => {
       state.id = '';
       state.name = '';
       state.email = '';
       state.contact = '';
+      state.userToken = ''
     }
   },
 })
