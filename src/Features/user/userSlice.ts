@@ -30,7 +30,7 @@ export const userSlice = createSlice({
       state.contact = action.payload.contact;
       state.userToken = action.payload.userToken
     },
-    logOutUser: (state) => {
+    clearUser: (state) => {
       state.id = '';
       state.name = '';
       state.email = '';
@@ -41,7 +41,7 @@ export const userSlice = createSlice({
 })
 
 //export any actions
-export const { saveUser } = userSlice.actions;
+export const { saveUser, clearUser } = userSlice.actions;
 
 // select current user
 export const selectUser = (state: RootState) => state.user;
