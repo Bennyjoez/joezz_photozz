@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 interface DateSelectorProps {
   setDetails: React.Dispatch<React.SetStateAction<DetailsState>>;
+  value: Date | null
 }
 
 interface DetailsState {
   event: string;
-  location: string,
+  shootLocation: string,
   message: string,
-  date: Date | null;
+  reservationDate: Date | null;
 }
 
-const DateSelector: React.FC<DateSelectorProps> = ({ setDetails }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+const DateSelector: React.FC<DateSelectorProps> = ({ setDetails, value }) => {
 
   const handleChange = (date: Date | null) => {
-    setSelectedDate(date);
-    setDetails((prev) => ({ ...prev, date: date }));
+    setDetails((prev) => ({ ...prev, reservationDate: date }));
   };
 
   const today = new Date();
@@ -26,14 +25,14 @@ const DateSelector: React.FC<DateSelectorProps> = ({ setDetails }) => {
   return (
     <div>
       <DatePicker
-        selected={selectedDate}
+        selected={value}
         onChange={handleChange}
         dateFormat="MM/dd/yyyy"
         isClearable
         placeholderText="Select a date"
         minDate={today}
       />
-      {selectedDate && <p>Selected date: {selectedDate.toLocaleDateString()}</p>}
+      {value && <p>Selected date: {value.toLocaleDateString()}</p>}
     </div>
   );
 };
