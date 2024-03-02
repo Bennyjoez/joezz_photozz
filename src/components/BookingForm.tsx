@@ -45,7 +45,17 @@ export default function BookingForm() {
         toast.success('Reserved a shoot date!');
       } else {
         // Handle non-successful response
-        console.error('Failed to save booking:', response.statusText);
+        const error = await response.json();
+        toast.error(error.errors.message)
+        if(error.errors.message.includes('date')) {
+          const target = document.getElementById('date')
+          if(target) {
+            target.style.backgroundColor = '#ff9d9d';
+            setTimeout(() => {
+              target.style.backgroundColor = 'inherit';
+            }, 6000)
+          }
+        }
       }
     } catch (error: unknown) {
       console.error('Error saving booking:', error);

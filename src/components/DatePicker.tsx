@@ -23,7 +23,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({ setDetails, value }) => {
   const today = new Date();
 
   return (
-    <div>
+    <div id='date'>
       <DatePicker
         selected={value}
         onChange={handleChange}
@@ -31,6 +31,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({ setDetails, value }) => {
         isClearable
         placeholderText="Select a date"
         minDate={today}
+        name='date'
       />
       {value && <p>Selected date: {value.toLocaleDateString()}</p>}
     </div>
