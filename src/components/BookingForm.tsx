@@ -1,28 +1,56 @@
 import { useState } from 'react'
-import { useAppDispatch } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { closePopup } from '../Features/modal/modalSlice';
 import DateSelector from './DatePicker';
+import { toast } from 'react-toastify';
 
 interface DetailsState {
   event: string;
-  location: string;
+  reservationDate: Date | null;
+  shootLocation: string;
   message: string;
-  date: Date | null;
 }
 
 export default function BookingForm() {
   const dispatch = useAppDispatch();
 
+  const { userToken } = useAppSelector((state) => state.user);
+
   const [details, setDetails] = useState<DetailsState>({
     event: '',
-    location: '',
+    shootLocation: '',
+    reservationDate: null,
     message: '',
-    date: null
   });
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    console.log( details.event, details.location, details.message, details.date);
+
+    const url = await import.meta.env.VITE_JOEZ_PHOTOZZ_BACKEND + '/bookings';
+    
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': `Bearer ${userToken}`
+        },
+        body: JSON.stringify(details),
+      });
+    
+      if (response.ok) {
+        // Booking saved
+        setDetails({ event: '', shootLocation: '', message: '', reservationDate: null });
+        dispatch(closePopup());
+        toast.success('Reserved a shoot date!');
+      } else {
+        // Handle non-successful response
+        console.error('Failed to save booking:', response.statusText);
+      }
+    } catch (error: unknown) {
+      console.error('Error saving booking:', error);
+    }
+    
   };
 
   const handleInput = (e: { target: { name: string; value: string; }; }) => {
@@ -41,14 +69,13 @@ export default function BookingForm() {
         <form onSubmit={handleSubmit} className='signup-form'>
           <div className='flex-form'>
             <label htmlFor="event">Event</label>
-            <input type="text" name="event" id="event" placeholder='What is the occasion?' onChange={handleInput} />
+            <input type="text" name="event" id="event" placeholder='What is the occasion?' onChange={handleInput} value={details.event} />
             <label htmlFor="contact">Shoot Location</label>
-            <input type="text" name="location" id="location" placeholder="Where's the shoot?" onChange={handleInput} />
+            <input type="text" name="shootLocation" id="location" placeholder="Where's the shoot?" onChange={handleInput} value={details.shootLocation} />
             <label htmlFor="date">Select a date</label>
-            {/* <input type="text" name="date" id="date" placeholder="When is the shoot?" onChange={handleInput} /> */}
-            <DateSelector setDetails={setDetails} />
+            <DateSelector setDetails={setDetails} value={details.reservationDate} />
             <label htmlFor="message">Message</label>
-            <textarea name="message" id="message" placeholder='What would you like us to know about your booking...' onChange={handleInput}></textarea>
+            <textarea name="message" id="message" placeholder='What would you like us to know about your booking...' onChange={handleInput} value={details.message} ></textarea>
 
             <button type="submit" className='book-session-btn'>Submit Booking</button>
           </div>
