@@ -11,7 +11,8 @@ export default function Navbar() {
   // if valid, get username
   const userName = useAppSelector((state) => state.user.name);
   return (
-    <div className="navbar">
+    <section id="nav-container">
+      <div className="navbar">
       <div className="logo">
         <Link to="/">
           <img src={logo} alt="Logo" />
@@ -52,5 +53,6 @@ export default function Navbar() {
         </div>
       )}
     </div>
+    </section>
   );
 }
