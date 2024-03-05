@@ -59,7 +59,7 @@ function Login() {
   };
 
   return (
-    <>
+    <div className='m-2'>
       {
       loggedInUser ? <Navigate to='/' replace={true} />
       :
@@ -82,7 +82,7 @@ function Login() {
         </form>
       </section>
     }
-    </>
+    </div>
   )
 }
 

@@ -57,7 +57,7 @@ function Register() {
   };
 
   return (
-    <>
+    <div className='m-2'>
       {
         loggedInUser 
         ?
@@ -86,7 +86,7 @@ function Register() {
           </form>
         </section>
       }
-    </>
+    </div>
   )
 }
 
