@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch } from '../app/hooks';
 import { clearUser } from '../Features/user/userSlice';
 import isTokenExpired from './checkToken';
 
 const useTokenValidityCheck = () => {
-  const { userToken } = useAppSelector((state) => state.user);
+  const userToken = localStorage.getItem('authToken') || '';
   const dispatch = useAppDispatch();
 
   useEffect(() => {
