@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import formImage from '../../../public/form.jpg';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { saveUser } from '../../Features/user/userSlice';
+import handleErrors from '../../utils/handleErrors';
+import axiosInstance from '../../utils/axiosInstance';
 
 function Login() {
   const dispatch = useAppDispatch();
@@ -16,42 +18,22 @@ function Login() {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const {email, password} = user;
-    const url = await import.meta.env.VITE_JOEZ_PHOTOZZ_BACKEND + '/users/login';
 
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+      const { data }  = await axiosInstance.post('/users/login', user);
+
+      // registration was successful
+      toast.success('User Logged in!');
+      dispatch(saveUser(data.user));
+      localStorage.setItem('authToken', data.token);
+      setUser({
+        email: '',
+        password: ''
       })
-
-      if (!response.ok) {
-        const data = await response.json();
-        if (response.status === 400 || response.status === 401) {
-          // wrong password or email
-          toast.error(data.error.message);
-        } else {
-          // Handle other errors
-          toast.error('Login failed. Please try again later.');
-        }
-        return;
-      }
-
-      // login was successful
-      toast.success('Login Successful!');
-      const { user } =  await response.json();
-      dispatch(saveUser(user));
-    } catch (err) {
-      toast.error('An unexpected error occurred. Please try again later.')
+    } catch (err: unknown) {
+      handleErrors(err);
     }
-  }
+  };
 
   const handleInput = (e: { target: { name: string; value: string; }; }) => {
     const target = e.target.name;

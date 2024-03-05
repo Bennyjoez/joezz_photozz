@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import formImage from '../../../public/form.jpg';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { saveUser } from '../../Features/user/userSlice';
+import axiosInstance from '../../utils/axiosInstance';
+import handleErrors from '../../utils/handleErrors';
 
 function Register() {
   const dispatch = useAppDispatch();
@@ -18,36 +20,23 @@ function Register() {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const { name, email, contact, password } = user;
-  
-    const url = await import.meta.env.VITE_JOEZ_PHOTOZZ_BACKEND + '/users/register';
+
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          contact,
-          password,
-        }),
-      })
-
-      if (!response.ok) {
-        const data = await response.json();
-
-        throw new Error(`${JSON.stringify(data.errors.message)}`);
-      }
+      const { data }  = await axiosInstance.post('/users/register', user);
 
       // registration was successful
-      const data = await response.json();
       toast.success(data.message);
-      dispatch(saveUser(data.data.user));
+      dispatch(saveUser(data.user));
+      localStorage.setItem('authToken', data.token);
+      setUser({
+        name: '',
+        email: '',
+        contact: '',
+        password: ''
+      })
     } catch (err: unknown) {
-      toast.error(`Registration failed: ${err}`)}
+      handleErrors(err);
+    }
   };
   
 
@@ -81,7 +70,7 @@ function Register() {
               <button type="submit" className='book-session-btn'>Register</button>
             </div>
             <p className='register-btn'>
-              You already have an account? <Link to='/login'>Login</Link>
+              Already have an account? <Link to='/login'>Login</Link>
             </p>
           </form>
         </section>
