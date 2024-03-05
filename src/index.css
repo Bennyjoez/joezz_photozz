@@ -23,6 +23,15 @@
   font-size: 3rem;
 }
 
+#nav-container {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+  box-shadow: 0 0 3px 3px darkcyan;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -387,6 +396,23 @@
   color: #c7421a;
   cursor: pointer;
   opacity: 100%;
+}
+
+#profile-page {
+  background-color: #4052b2;
+  min-height: 100vh;
+  padding: 10px;
+  padding-top: 100px;
+}
+
+.profile-tile {
+  background-color: azure;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.m-2 {
+  margin-top: 100px;
 }
 
 @media only screen and (min-width: 1000px) {
