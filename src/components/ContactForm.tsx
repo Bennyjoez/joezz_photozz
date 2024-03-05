@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import axios from 'axios';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
+import axiosInstance from '../utils/axiosInstance';
 
 export default function Form() {
   const [details, setDetails] = useState({
@@ -12,11 +12,8 @@ export default function Form() {
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
-    // send request to the backend
-    const url = `${import.meta.env.VITE_JOEZ_PHOTOZZ_BACKEND}/messages`;
-
     try {
-      const res = await axios.post(url, details);
+      const res = await axiosInstance.post('/messages', details);
       if(res.status >= 200 && res.status < 300) {
         // message is saved
         setDetails({name: '', email: '', message: ''});
