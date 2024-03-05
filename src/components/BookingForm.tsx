@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch } from '../app/hooks';
 import { closePopup } from '../Features/modal/modalSlice';
 import DateSelector from './DatePicker';
 import { toast } from 'react-toastify';
+import axiosInstance from '../utils/axiosInstance';
+import handleErrors from '../utils/handleErrors';
 
 interface DetailsState {
   event: string;
@@ -14,8 +16,6 @@ interface DetailsState {
 export default function BookingForm() {
   const dispatch = useAppDispatch();
 
-  const { userToken } = useAppSelector((state) => state.user);
-
   const [details, setDetails] = useState<DetailsState>({
     event: '',
     shootLocation: '',
@@ -25,40 +25,16 @@ export default function BookingForm() {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-
-    const url = await import.meta.env.VITE_JOEZ_PHOTOZZ_BACKEND + '/bookings';
-    
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': `Bearer ${userToken}`
-        },
-        body: JSON.stringify(details),
-      });
-    
-      if (response.ok) {
-        // Booking saved
-        setDetails({ event: '', shootLocation: '', message: '', reservationDate: null });
-        dispatch(closePopup());
-        toast.success('Reserved a shoot date!');
-      } else {
-        // Handle non-successful response
-        const error = await response.json();
-        toast.error(error.errors.message)
-        if(error.errors.message.includes('date')) {
-          const target = document.getElementById('date')
-          if(target) {
-            target.style.backgroundColor = '#ff9d9d';
-            setTimeout(() => {
-              target.style.backgroundColor = 'inherit';
-            }, 6000)
-          }
-        }
-      }
+      await axiosInstance.post('/bookings', details)
+
+      // Booking saved
+      setDetails({ event: '', shootLocation: '', message: '', reservationDate: null });
+      dispatch(closePopup());
+      toast.success('Reserved a shoot date!');
     } catch (error: unknown) {
-      console.error('Error saving booking:', error);
+      // Handle non-successful response
+      handleErrors(error);
     }
     
   };
@@ -91,7 +67,7 @@ export default function BookingForm() {
           </div>
         </form>
       </div>
-      <span className="modal-close" onClick={onCloseButtonClick}>
+      <span className="modal-close" role='button' onClick={onCloseButtonClick}>
           &#10005; {/* HTML code multiplication sign */}
         </span>
     </section>
