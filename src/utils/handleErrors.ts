@@ -1,8 +1,7 @@
 import { toast } from "react-toastify";
 
 const handleErrors = (error: unknown) => {
-  const {data, statusText} = error.response
-  console.log(statusText)
+  const {data, statusText} = error.response;
     // bad route
     if (data.message && data.message.includes('Cannot find')) {
       toast.error(data.message);
