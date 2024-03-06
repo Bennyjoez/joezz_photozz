@@ -5,6 +5,7 @@ import DateSelector from './DatePicker';
 import { toast } from 'react-toastify';
 import axiosInstance from '../utils/axiosInstance';
 import handleErrors from '../utils/handleErrors';
+import { addBooking } from '../Features/bookings/bookingSlice';
 
 interface DetailsState {
   event: string;
@@ -26,10 +27,11 @@ export default function BookingForm() {
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
-      await axiosInstance.post('/bookings', details)
+      const { data } = await axiosInstance.post('/bookings', details);
 
       // Booking saved
       setDetails({ event: '', shootLocation: '', message: '', reservationDate: null });
+      dispatch(addBooking(data.booking))
       dispatch(closePopup());
       toast.success('Reserved a shoot date!');
     } catch (error: unknown) {
