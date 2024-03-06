@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { getUserBookings } from "../utils/getBookings";
 import useTokenValidityCheck from "../utils/useCustomValidityCheck";
-import handleErrors from "../utils/handleErrors";
-import { clearBookings, saveBookings } from "../Features/bookings/bookingSlice";
+// import { saveBookings } from "../Features/bookings/bookingSlice";
+import BookingEntry from "../components/bookingEntry";
+import { RootState } from "../app/store";
+import { fetchBookings } from "../Features/bookings/bookingSlice";
 
 function Profile() {
   const dispatch = useAppDispatch();
@@ -11,35 +12,17 @@ function Profile() {
   useTokenValidityCheck();
 
   const { name, email, contact, id } = useAppSelector((state) => state.user);
-  let bookings = useAppSelector((state) => state.bookings);
-
-  if (bookings.length > 0 && bookings[0].client._id !== id) {
-    dispatch(clearBookings());
-    bookings = [];
-  }
-
-  const [allBookings, setBookings] = useState(bookings || []);
+  const { bookings, status, error } = useAppSelector(
+    (state: RootState) => state.bookings
+  );
 
   useEffect(() => {
-    const fetchBookings = async () => {
-      console.log("called")
-      try {
-        const fetchedBookings = (await getUserBookings(id)).data.data;
-        setBookings(fetchedBookings);
-        dispatch(saveBookings(fetchedBookings));
-      } catch (error) {
-        handleErrors(error);
-      }
-    };
-
-    if (allBookings) {
-      return;
+    if (status === "idle") {
+      dispatch(fetchBookings(id));
     }
+  }, [id, status, dispatch]);
 
-    if (id) {
-      fetchBookings();
-    }
-  }, [id, dispatch, allBookings]);
+  // login to get profile
   if (!name) {
     return (
       <div className="m-2">
@@ -49,6 +32,15 @@ function Profile() {
     );
   }
 
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  if (status === "failed") {
+    return <div>{error}</div>;
+  }
+
+
   return (
     <section id="profile-page">
       <div className="profile-tile">
@@ -56,11 +48,21 @@ function Profile() {
         <p>Email: {email}</p>
         <p>Contact: {contact}</p>
       </div>
-      <div className="profile-tile">
-        {
-          allBookings && allBookings.map((e) => <div key={e._id}>{e.event}</div>)
-        }
-      </div>
+      <table className="profile-tile bookings">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>EVENT</th>
+            <th>DATE</th>
+            <th>SHOOT LOCATION</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            bookings && bookings.map((e) => <BookingEntry key={e._id} booking={e} />)
+          }
+        </tbody>
+      </table>
     </section>
   );
 }

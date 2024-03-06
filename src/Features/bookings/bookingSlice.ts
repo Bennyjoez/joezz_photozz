@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { getUserBookings } from "../../utils/getBookings";
 
-interface Booking {
+export interface Booking {
   client: { _id: string; name: string };
   event: string;
   message: string;
@@ -9,27 +10,58 @@ interface Booking {
   _id: string;
 }
 
-const initialState: Booking[] = [];
+interface BookingState {
+  bookings: Booking[];
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
+}
+
+const initialState: BookingState = {
+  bookings: [],
+  status: "idle",
+  error: null,
+};
+
+export const fetchBookings = createAsyncThunk(
+  "bookings/fetchBookings",
+  async (userId: string) => {
+    const response = await getUserBookings(userId);
+    return response.data.data;
+  }
+);
 
 export const bookingSlice = createSlice({
-  name: 'bookings',
+  name: "bookings",
   initialState,
   reducers: {
-    saveBookings: (state, action: PayloadAction<Booking[]>) => {
-      state = action.payload;
+    addBooking: (state, action) => {
+      state.bookings.push(action.payload);
     },
-    addBooking: (state, action: PayloadAction<Booking>) => {
-      state.push(action.payload);
+    removeBooking: (state, action) => {
+      state.bookings = state.bookings.filter(
+        (booking) => booking._id !== action.payload
+      );
     },
-    removeBooking: (state, action: PayloadAction<string>) => {
-      return state.filter(booking => booking._id !== action.payload);
+    clearBookings: (state) => {
+      state.bookings = [];
     },
-    clearBookings: () => {
-      return initialState;
-    }
-  }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBookings.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchBookings.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.bookings = action.payload
+      })
+      .addCase(fetchBookings.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Failed to fetch bookings";
+      });
+  },
 });
 
-export const { saveBookings, addBooking, removeBooking, clearBookings } = bookingSlice.actions;
+export const { addBooking, removeBooking, clearBookings } = bookingSlice.actions;
 
 export default bookingSlice.reducer;
