@@ -14,6 +14,7 @@ const useTokenValidityCheck = () => {
       // Clear user details from the state if token is expired
       dispatch(clearUser());
       dispatch(clearBookings());
+      localStorage.removeItem('authToken');
     }
   }, [userToken, dispatch]);
 

@@ -53,7 +53,7 @@ export const bookingSlice = createSlice({
       })
       .addCase(fetchBookings.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.bookings = action.payload
+        state.bookings = action.payload;
       })
       .addCase(fetchBookings.rejected, (state, action) => {
         state.status = "failed";
