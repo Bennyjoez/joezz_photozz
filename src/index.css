@@ -400,7 +400,7 @@
 
 #profile-page {
   background-color: #4052b2;
-  min-height: 100vh;
+  min-height: calc(100vh - 110px);
   padding: 10px;
   padding-top: 100px;
 }
@@ -421,6 +421,7 @@
   overflow-x: scroll;
   text-align: center;
   margin-top: 20px;
+  height: 50vh;
 }
 
 table {
@@ -445,6 +446,11 @@ tr:hover{
   &:hover {
     background-color: pink;
   }
+}
+
+th,
+td {
+  padding: 10px 5px;
 }
 
 .bookings tr:not(:last-of-type) {
