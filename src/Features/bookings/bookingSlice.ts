@@ -44,6 +44,8 @@ export const bookingSlice = createSlice({
     },
     clearBookings: (state) => {
       state.bookings = [];
+      state.status = 'idle'
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
