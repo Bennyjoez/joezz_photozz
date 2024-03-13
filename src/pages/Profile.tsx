@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import useTokenValidityCheck from "../utils/useCustomValidityCheck";
-// import { saveBookings } from "../Features/bookings/bookingSlice";
 import BookingEntry from "../components/bookingEntry";
 import { RootState } from "../app/store";
 import { fetchBookings } from "../Features/bookings/bookingSlice";
@@ -40,29 +39,31 @@ function Profile() {
     return <div>{error}</div>;
   }
 
-
   return (
     <section id="profile-page">
-      <div className="profile-tile">
+      <div className="bg">
         <p>Hello, {name.toUpperCase()}</p>
         <p>Email: {email}</p>
         <p>Contact: {contact}</p>
       </div>
-      <table className="profile-tile bookings">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>EVENT</th>
-            <th>DATE</th>
-            <th>SHOOT LOCATION</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            bookings && bookings.map((e) => <BookingEntry key={e._id} booking={e} />)
-          }
-        </tbody>
-      </table>
+      <div className="bookings bg">
+        <table className="profile-tile">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>EVENT</th>
+              <th>DATE</th>
+              <th>SHOOT LOCATION</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              bookings ? bookings.map((e) => <BookingEntry key={e._id} booking={e} />) : <tr><td>No Bookings</td></tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 }
