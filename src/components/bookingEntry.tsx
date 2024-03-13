@@ -16,6 +16,7 @@ const BookingEntry: React.FC<BookingProps> = ({ booking }) => {
       <td>{booking.event}</td>
       <td>{getDate(booking.reservationDate)}</td>
       <td>{booking.shootLocation}</td>
+      <td>{booking.message || "-"}</td>
     </tr>
   )
 }
