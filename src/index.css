@@ -431,12 +431,13 @@ thead {
   background-color: #4db240;
 }
 
-tr:hover{
-  background-color: rgba(255, 192, 203, 0.4);
-}
 
 tr:nth-child(even) {
   background-color: rgba(128, 128, 128, 0.322);
+}
+
+tr:hover{
+  background-color: rgba(255, 192, 203, 0.4);
 }
 
 .bookings th,
