@@ -1,15 +1,11 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import useTokenValidityCheck from "../utils/useCustomValidityCheck";
 import BookingEntry from "../components/bookingEntry";
 import { RootState } from "../app/store";
 import { fetchBookings } from "../Features/bookings/bookingSlice";
 
 function Profile() {
   const dispatch = useAppDispatch();
-  // Validate userToken
-  useTokenValidityCheck();
-
   const { name, email, contact, id } = useAppSelector((state) => state.user);
   const { bookings, status, error } = useAppSelector(
     (state: RootState) => state.bookings
