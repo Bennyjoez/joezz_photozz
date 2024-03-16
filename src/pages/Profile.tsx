@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import BookingEntry from "../components/bookingEntry";
 import { RootState } from "../app/store";
-import { fetchBookings } from "../Features/bookings/bookingSlice";
+import { clearBookings, fetchBookings } from "../Features/bookings/bookingSlice";
+import { clearUser } from "../Features/user/userSlice";
 
 function Profile() {
   const dispatch = useAppDispatch();
@@ -10,6 +11,12 @@ function Profile() {
   const { bookings, status, error } = useAppSelector(
     (state: RootState) => state.bookings
   );
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    dispatch(clearUser());
+    dispatch(clearBookings());
+  }
 
   useEffect(() => {
     if (status === "idle") {
@@ -41,6 +48,7 @@ function Profile() {
         <p>Hello, {name.toUpperCase()}</p>
         <p>Email: {email}</p>
         <p>Contact: {contact}</p>
+        <button className="logout-btn" onClick={handleLogout}>Logout</button>
       </div>
       <div className="bookings bg">
         <table className="profile-tile">
