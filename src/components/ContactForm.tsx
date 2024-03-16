@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import axiosInstance from '../utils/axiosInstance';
+import { FiPhoneCall } from "react-icons/fi";
+import { TbMailShare, TbWorldUp } from "react-icons/tb";
 
 export default function Form() {
   const [details, setDetails] = useState({
@@ -47,6 +49,24 @@ export default function Form() {
 
   return (
     <section id='contact' className="bookings-form-container">
+      <ul className='contact-details-container'>
+        <li className='contact-details'>
+          <span className='contact-icon'>
+            <FiPhoneCall />
+          </span>
+          <span>Phone: +254703599501</span>
+        </li>
+        <li className='contact-details'>
+          <span className='contact-icon'>
+            <TbMailShare />
+          </span>
+          <span>Email: <a href="mailto:njugunab655@gmail.com">njugunab655@gmail.com</a></span>
+        </li>
+        <li className='contact-details'>
+          <span className='contact-icon'><TbWorldUp />
+          </span><span>Website: <a href="https://soft-portfolio.netlify.app/">Portfolio</a></span>
+        </li>
+      </ul>
       <form onSubmit={handleSubmit} className='signup-form'>
         <div className='flex-form'>
           <label htmlFor="name">Name:</label>
@@ -59,6 +79,7 @@ export default function Form() {
           <button type="submit" className='book-session-btn'>Send Message</button>
         </div>
       </form>
+      <footer>Project by Benson Njuguna Kamau</footer>
     </section>
   )
 }
