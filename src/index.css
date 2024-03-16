@@ -10,6 +10,8 @@
 
 body {
   min-width: 300px;
+  min-height: 100vh;
+  padding-top: 70px;
 }
 
 #error-page {
@@ -26,6 +28,14 @@ body {
 
 #error-icon {
   font-size: 3rem;
+}
+
+footer {
+  color: white;
+  backdrop-filter: blur(20px);
+  width: 100%;
+  display: grid;
+  place-items: center;
 }
 
 #nav-container {
@@ -235,7 +245,6 @@ body {
 
 .bookings-form-container {
   background: url('../public/book.jpg');
-  border-radius: 20px;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -243,17 +252,44 @@ body {
   align-items: center;
   gap: 20px;
   padding: 40px;
-}
+  
+  .signup-form {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    padding: 20px;
+  }
+  
+  .flex-form {
+    width: 100%;
+    font-weight: 600;
+  }
 
-.bookings-form-container .signup-form {
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 20px;
-  padding: 20px;
-}
+  .contact-details-container {
+    display: flex;
+    gap: 50px;
 
-.bookings-form-container .flex-form {
-  width: 100%;
-  font-weight: 600;
+    li {
+      color: white;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      
+      a {
+        color: white;
+      }
+      
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        color: black;
+        background-color: aliceblue;
+        border-radius: 50%;
+      }
+    }
+  }
 }
 
 .form-container {
@@ -356,6 +392,7 @@ body {
   width: 100%;
   display: grid;
   place-items: center;
+  flex: 3
 }
 
 .placeholder-image {
@@ -364,6 +401,7 @@ body {
   place-items: center;
   height: 30%;
   overflow: hidden;
+  flex: 2;
 }
 
 .placeholder-image img {
@@ -405,9 +443,8 @@ body {
 
 #profile-page {
   background-color: #4052b2;
-  min-height: calc(100vh - 110px);
+  min-height: calc(100vh - 70px);
   padding: 10px;
-  padding-top: 100px;
 }
 
 .bg {
@@ -460,10 +497,6 @@ td {
 
 .bookings tr:not(:last-of-type) {
   border-bottom: 1px solid black;
-}
-
-.m-2 {
-  margin-top: 100px;
 }
 
 @media only screen and (min-width: 1000px) {
