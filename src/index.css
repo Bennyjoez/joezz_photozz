@@ -5,6 +5,11 @@
   padding: 0;
   margin: 0;
   border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 300px;
 }
 
 #error-page {
@@ -24,7 +29,7 @@
 }
 
 #nav-container {
-  width: 100vw;
+  width: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
@@ -254,8 +259,8 @@
 .form-container {
   background-color: whitesmoke;
   border-radius: 20px;
+  width: calc(100vw - 40px);
   padding: 20px;
-  width: fit-content;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -354,7 +359,7 @@
 }
 
 .placeholder-image {
-  width: 400px;
+  width: 100%;
   display: grid;
   place-items: center;
   height: 30%;
@@ -467,6 +472,20 @@ td {
   }
 }
 
+@media only screen and (min-width: 300px) and (max-width: 350px) {
+  .form-container {
+    padding-top: 20px;
+    input,
+    button {
+      padding: 5px 10px;
+    }
+    
+    button {
+      font-size: 0.8rem;
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .navbar {
     font-size: 1.5rem;
@@ -516,8 +535,15 @@ td {
   }
 
   .form-container {
+    width: 70%;
+    max-width: 1000px;
     flex-direction: row;
-    height: fit-content;
+    align-items: center;
+  }
+
+  .form-container .placeholder-image {
+    width: 400px;
+    height: 400px;
   }
 
   .modal-close {
