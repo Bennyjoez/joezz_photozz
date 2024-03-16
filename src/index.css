@@ -447,6 +447,19 @@ footer {
   padding: 10px;
 }
 
+.logout-btn {
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: 600;
+  box-shadow: 0 0 3px 2px;
+
+  &:hover {
+    color: red;
+  }
+}
+
 .bg {
   background-color: azure;
   padding: 20px;
