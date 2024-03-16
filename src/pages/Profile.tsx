@@ -1,6 +1,6 @@
+import { Table } from '../components/Table';
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import BookingEntry from "../components/bookingEntry";
 import { RootState } from "../app/store";
 import { clearBookings, fetchBookings } from "../Features/bookings/bookingSlice";
 import { clearUser } from "../Features/user/userSlice";
@@ -50,24 +50,7 @@ function Profile() {
         <p>Contact: {contact}</p>
         <button className="logout-btn" onClick={handleLogout}>Logout</button>
       </div>
-      <div className="bookings bg">
-        <table className="profile-tile">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>EVENT</th>
-              <th>DATE</th>
-              <th>SHOOT LOCATION</th>
-              <th>Message</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              bookings ? bookings.map((e) => <BookingEntry key={e._id} booking={e} />) : <tr><td>No Bookings</td></tr>
-            }
-          </tbody>
-        </table>
-      </div>
+      <Table   bookings={bookings}  />
     </section>
   );
 }
