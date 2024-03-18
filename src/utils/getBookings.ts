@@ -1,10 +1,7 @@
 import axiosInstance from "./axiosInstance";
 
 export const getUserBookings = async ( id:string ) => {
-  const bookings = await axiosInstance.get('/bookings', {
-    params: {
-      id
-    }
-  });
+  const endPoint = `/bookings/${id}`;
+  const bookings = await axiosInstance.get(endPoint);
   return bookings;
 }
