@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getUserBookings } from "../../utils/getBookings";
+import { getUserBookings } from "../../utils/bookingsEndpoints";
 
 export interface Booking {
   client: { _id: string; name: string };
