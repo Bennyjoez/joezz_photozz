@@ -1,5 +1,6 @@
 import { Booking } from '../components/Table';
-import { cancelBooking } from '../utils/bookingsEndpoints';
+import { deleteBooking } from '../utils/bookingsEndpoints';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface BookingProps {
   booking: Booking
@@ -11,6 +12,19 @@ const BookingEntry: React.FC<BookingProps> = ({ booking }) => {
     return newDate.toDateString();
   }
 
+  const queryClient = useQueryClient()
+
+  const cancelBooking = async () => {
+    try {
+      // delete a booking
+      deleteBooking(booking._id);
+      // invalidate bookings to force a refetch
+      queryClient.invalidateQueries({ queryKey: ['bookings'] });
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <tr>
       <td>{booking._id}</td>
@@ -19,7 +33,7 @@ const BookingEntry: React.FC<BookingProps> = ({ booking }) => {
       <td>{booking.shootLocation}</td>
       <td>{booking.message || "-"}</td>
       <td>
-        <button className='cancel' onClick={() => cancelBooking(booking._id)}>Cancel</button>
+        <button className='cancel' onClick={cancelBooking}>Cancel</button>
       </td>
     </tr>
   )
