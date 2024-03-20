@@ -6,6 +6,10 @@ interface TableProps {
 }
 
 export function Table({ bookings }: TableProps) {
+  if (bookings.length < 1) {
+    return (<div className="bookings bg">You have no bookings!</div>)
+  }
+
   return (
     <div className="bookings bg">
       <table className="profile-tile">
