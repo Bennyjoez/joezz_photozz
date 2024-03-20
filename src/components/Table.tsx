@@ -1,5 +1,13 @@
 import BookingEntry from "./bookingEntry";
-import { Booking } from "../Features/bookings/bookingSlice";
+
+interface Booking {
+  client: { _id: string; name: string };
+  event: string;
+  message: string;
+  reservationDate: Date;
+  shootLocation: string;
+  _id: string;
+}
 
 interface TableProps {
   bookings: Booking[]
