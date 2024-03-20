@@ -24,14 +24,14 @@ export default function BookingForm() {
     message: '',
   });
 
-  const mutation = useMutation({
+  const addBookingMutation = useMutation({
     mutationFn: (details: DetailsState) => addBooking(details)
   })
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
-      mutation.mutate(details);
+      addBookingMutation.mutate(details);
 
       // Booking saved
       setDetails({ event: '', shootLocation: '', message: '', reservationDate: null });
