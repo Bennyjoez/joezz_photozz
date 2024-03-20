@@ -1,6 +1,6 @@
 import BookingEntry from "./bookingEntry";
 
-interface Booking {
+export interface Booking {
   client: { _id: string; name: string };
   event: string;
   message: string;
@@ -28,6 +28,7 @@ export function Table({ bookings }: TableProps) {
             <th>DATE</th>
             <th>SHOOT LOCATION</th>
             <th>Message</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

@@ -8,7 +8,10 @@ export const getUserBookings = async ( id:string ) => {
 }
 
 export const addBooking = async (details: DetailsState) => {
-  const { data } = await axiosInstance.post('/bookings', details);
+  await axiosInstance.post('/bookings', details);
+}
 
-  return data;
+export const cancelBooking = async (id: string) => {
+  console.log(id)
+  return "canceled"
 }

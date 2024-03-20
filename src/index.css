@@ -447,8 +447,11 @@ footer {
   padding: 10px;
 }
 
-.logout-btn {
+.logout-btn{
   margin-top: 10px;
+}
+
+.logout-btn, .cancel {
   cursor: pointer;
   padding: 5px;
   border-radius: 5px;
