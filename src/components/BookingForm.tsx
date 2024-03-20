@@ -3,11 +3,11 @@ import { useAppDispatch } from '../app/hooks';
 import { closePopup } from '../Features/modal/modalSlice';
 import DateSelector from './DatePicker';
 import { toast } from 'react-toastify';
-import axiosInstance from '../utils/axiosInstance';
 import handleErrors from '../utils/handleErrors';
-import { addBooking } from '../Features/bookings/bookingSlice';
+import { addBooking } from '../utils/bookingsEndpoints';
+import { useMutation } from '@tanstack/react-query';
 
-interface DetailsState {
+export interface DetailsState {
   event: string;
   reservationDate: Date | null;
   shootLocation: string;
@@ -24,14 +24,17 @@ export default function BookingForm() {
     message: '',
   });
 
+  const mutation = useMutation({
+    mutationFn: (details: DetailsState) => addBooking(details)
+  })
+
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
-      const { data } = await axiosInstance.post('/bookings', details);
+      mutation.mutate(details);
 
       // Booking saved
       setDetails({ event: '', shootLocation: '', message: '', reservationDate: null });
-      dispatch(addBooking(data.booking))
       dispatch(closePopup());
       toast.success('Reserved a shoot date!');
     } catch (error: unknown) {
