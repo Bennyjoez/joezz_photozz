@@ -16,8 +16,13 @@ function Profile() {
   });
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    dispatch(clearUser());
+    const logoutBtn = document.getElementById('logout') as HTMLInputElement;
+    if (logoutBtn) {
+      logoutBtn.disabled = true;
+      localStorage.removeItem("authToken");
+      dispatch(clearUser());
+      logoutBtn.disabled = false;
+    }
   };
 
   // login to get profile

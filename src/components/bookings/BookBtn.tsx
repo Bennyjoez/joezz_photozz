@@ -13,6 +13,11 @@ export default function BookBtn() {
   const userName = useAppSelector((state) => state.user.name);
 
   const handleClick = () => {
+    const bookSessionBtn = document.getElementById("book-session-button") as HTMLInputElement;
+    if (!bookSessionBtn) {
+      return;
+    }
+    bookSessionBtn.disabled = true;
     // If logged in, navigate to booking form else login/signup form
     if (userName) {
       dispatch(showPopup());
@@ -20,10 +25,11 @@ export default function BookBtn() {
       toast("Please Login first!");
       navigate("/login");
     }
+    bookSessionBtn.disabled = false;
   };
 
   return (
-    <button type="button" onClick={handleClick} className="book-session-btn">
+    <button id="book-session-button" type="button" onClick={handleClick} className="book-session-btn">
       Book Session
     </button>
   );

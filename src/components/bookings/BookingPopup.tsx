@@ -30,21 +30,27 @@ export default function BookingForm() {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    const submitBtn = document.getElementById("submit-booking") as HTMLInputElement;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+    }
     try {
+      if (!details.event || !details.shootLocation || !details.reservationDate) {
+        toast.error("Cannot submit empty fields!")
+        throw new Error("Cannot submit empty fields!")
+      }
       addBookingMutation.mutate(details);
 
       // Booking saved
-      setDetails({
-        event: "",
-        shootLocation: "",
-        message: "",
-        reservationDate: null,
-      });
       dispatch(closePopup());
-      toast.success("Reserved a shoot date!");
+      toast.success("Reserved your shoot date!");
     } catch (error: unknown) {
       // Handle non-successful response
       handleErrors(error);
+    }
+    if (submitBtn) {
+      submitBtn.disabled = true;
     }
   };
 
@@ -94,7 +100,7 @@ export default function BookingForm() {
               value={details.message}
             ></textarea>
 
-            <button type="submit" className="book-session-btn">
+            <button id="submit-booking" type="submit" className="book-session-btn">
               Submit Booking
             </button>
           </div>

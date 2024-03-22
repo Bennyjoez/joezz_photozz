@@ -1,4 +1,4 @@
-import BookingEntry from "./bookings/BookingEntry";
+import BookingEntry from "./profile/BookingEntry";
 
 export interface Booking {
   client: { _id: string; name: string };

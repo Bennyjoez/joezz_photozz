@@ -3,7 +3,7 @@ import Hero from "../components/Hero";
 import Reviews from "../components/Reviews";
 import Services from "../components/services/Services";
 import About from "../components/About";
-import BookingForm from "../components/bookings/BookingForm";
+import BookingForm from "../components/bookings/BookingPopup";
 import { useAppSelector } from "../app/hooks";
 
 export default function Home() {

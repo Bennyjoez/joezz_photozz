@@ -1,5 +1,3 @@
-import React from "react";
-
 interface profileHeroProps {
   name: string,
   email: string,
@@ -13,13 +11,14 @@ export function ProfileHero({
   contact,
   handleLogout
 }: profileHeroProps) {
-  return <div className="bg">
-        <p>Hello, {name.toUpperCase()}</p>
-        <p>Email: {email}</p>
-        <p>Contact: {contact}</p>
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>;
+  return (
+    <div className="bg">
+      <p>Hello, {name.toUpperCase()}</p>
+      <p>Email: {email}</p>
+      <p>Contact: {contact}</p>
+      <button id="logout" className="logout-btn" onClick={handleLogout}>
+        Logout
+      </button>
+    </div>
+  )
 }
-  
