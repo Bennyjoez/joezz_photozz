@@ -1,3 +1,4 @@
+import { ProfileHero } from './../components/profile/ProfileHero';
 import { Table } from "../components/Table";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { clearUser } from "../Features/user/userSlice";
@@ -41,14 +42,7 @@ function Profile() {
 
   return (
     <section id="profile-page">
-      <div className="bg">
-        <p>Hello, {name.toUpperCase()}</p>
-        <p>Email: {email}</p>
-        <p>Contact: {contact}</p>
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
+      <ProfileHero name={name} email={email} contact={contact} handleLogout={handleLogout}  />
       <Table bookings={bookings} />
     </section>
   );

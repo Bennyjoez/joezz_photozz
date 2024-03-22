@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { closePopup } from "../../Features/modal/modalSlice";
-import DateSelector from "../DatePicker";
+import DateSelector from "./DatePicker";
 import { toast } from "react-toastify";
 import handleErrors from "../../utils/handleErrors";
 import { addBooking } from "../../utils/bookingsEndpoints";
