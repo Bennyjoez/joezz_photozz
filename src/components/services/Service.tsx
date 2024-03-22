@@ -1,4 +1,4 @@
-import BookBtn from "../BookBtn";
+import BookBtn from "../bookings/BookBtn";
 
 interface Service {
   title: string;
@@ -6,7 +6,7 @@ interface Service {
   img: string;
 }
 
-export default function Service({title, description, img}: Service) {
+export default function Service({ title, description, img }: Service) {
   return (
     <div className="service">
       <img src={img} alt="potrait" />
@@ -16,5 +16,5 @@ export default function Service({title, description, img}: Service) {
       </div>
       <BookBtn />
     </div>
-  )
+  );
 }

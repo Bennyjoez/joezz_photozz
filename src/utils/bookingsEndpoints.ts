@@ -1,4 +1,4 @@
-import { DetailsState } from "../components/BookingForm";
+import { DetailsState } from "../components/bookings/BookingForm";
 import axiosInstance from "./axiosInstance";
 
 export const getUserBookings = async ( id:string ) => {

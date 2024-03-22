@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useNavigate } from "react-router-dom";
-import { showPopup } from "../Features/modal/modalSlice";
-import useTokenValidityCheck from "../utils/useCustomValidityCheck";
+import { showPopup } from "../../Features/modal/modalSlice";
+import useTokenValidityCheck from "../../utils/useCustomValidityCheck";
 
 export default function BookBtn() {
   const dispatch = useAppDispatch();
@@ -15,14 +15,16 @@ export default function BookBtn() {
   const handleClick = () => {
     // If logged in, navigate to booking form else login/signup form
     if (userName) {
-      dispatch(showPopup())
+      dispatch(showPopup());
     } else {
-      toast('Please Login first!')
-      navigate('/login')
+      toast("Please Login first!");
+      navigate("/login");
     }
-  }
+  };
 
   return (
-    <button type="button" onClick={handleClick} className='book-session-btn'>Book Session</button>
-  )
+    <button type="button" onClick={handleClick} className="book-session-btn">
+      Book Session
+    </button>
+  );
 }

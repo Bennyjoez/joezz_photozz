@@ -1,4 +1,4 @@
-import BookingEntry from "./bookingEntry";
+import BookingEntry from "./bookings/BookingEntry";
 
 export interface Booking {
   client: { _id: string; name: string };
@@ -10,12 +10,12 @@ export interface Booking {
 }
 
 interface TableProps {
-  bookings: Booking[]
+  bookings: Booking[];
 }
 
 export function Table({ bookings }: TableProps) {
   if (bookings.length < 1) {
-    return (<div className="bookings bg">You have no bookings!</div>)
+    return <div className="bookings bg">You have no bookings!</div>;
   }
 
   return (
@@ -32,9 +32,15 @@ export function Table({ bookings }: TableProps) {
           </tr>
         </thead>
         <tbody>
-          {bookings ? bookings.map(e => <BookingEntry key={e._id} booking={e} />) : <tr><td>No Bookings</td></tr>}
+          {bookings ? (
+            bookings.map((e) => <BookingEntry key={e._id} booking={e} />)
+          ) : (
+            <tr>
+              <td>No Bookings</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
-  )
+  );
 }
