@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { clearUser } from "../Features/user/userSlice";
 import { useQuery } from "@tanstack/react-query";
 import { getUserBookings } from "../utils/bookingsEndpoints";
+import ErrorContainer from '../components/error/ErrorContainer';
 
 function Profile() {
   const dispatch = useAppDispatch();
@@ -28,11 +29,13 @@ function Profile() {
   // login to get profile
   if (!name) {
     return (
-      <div className="m-2">
-        Please Login to access this page. 🔴
-        <br />
-        <a href="/login">Login Page</a>
-      </div>
+      <ErrorContainer>
+        <div className="m-2">
+          <b>Please Login to access this page. 🔴</b>
+          <br />
+          <a href="/login">Login Page</a>
+        </div>
+      </ErrorContainer>
     );
   }
 
