@@ -7,6 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./pages/Error.tsx";
 import "./index.css";
+import "./reset.css"
 import About from "./pages/About.tsx";
 import Services from "./pages/Services.tsx";
 import Register from "./components/authentication/Register.tsx";
