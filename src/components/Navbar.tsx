@@ -1,6 +1,6 @@
 import logo from "/logo.png";
 import { ImWhatsapp } from "react-icons/im";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
 import { CgProfile } from "react-icons/cg";
 import useTokenValidityCheck from "../utils/useCustomValidityCheck";
@@ -8,6 +8,8 @@ import useTokenValidityCheck from "../utils/useCustomValidityCheck";
 export default function Navbar() {
   // validate userToken
   useTokenValidityCheck();
+  const location = useLocation().pathname;
+  console.log(location, "location")
   // if valid, get username
   const userName = useAppSelector((state) => state.user.name);
   return (
@@ -47,9 +49,17 @@ export default function Navbar() {
         </div>
       ) : (
         <div>
-          <Link to="/register" className="register-btn">
-            Sign Up
-          </Link>
+          {
+            location === "/register"
+            ?
+            <Link to="/login" className="register-btn">
+              Login
+            </Link>
+            :
+            <Link to="/register" className="register-btn">
+              Sign Up
+            </Link>
+          }
         </div>
       )}
     </div>
