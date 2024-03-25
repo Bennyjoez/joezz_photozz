@@ -10,7 +10,7 @@ interface AuthContainerProps {
 const AuthContainer: React.FunctionComponent<AuthContainerProps> = ({ children }) => {
   const loggedInUser = useAppSelector((state) => state.user.name);
   return (
-    <section>
+    <section className="auth-container">
       {
         loggedInUser 
         ?
