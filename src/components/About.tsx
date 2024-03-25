@@ -13,7 +13,7 @@ export default function About() {
 
       <p>Thank you for considering Joezz Photography for your photographic needs 🌟</p>
       </aside>
-      <aside>
+      <aside className='image-container'>
         <div>
           <img src={shootImage} alt="Lady on a shoot" />
         </div>

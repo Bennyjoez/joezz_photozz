@@ -348,6 +348,15 @@ footer {
   gap: 20px;
   max-width: 1280px;
   margin: 0 auto;
+
+  .image-container {
+    margin: 0 auto;
+
+    div {
+      display: grid;
+      place-items: center;
+    }
+  }
 }
 
 .about-description {
@@ -574,10 +583,13 @@ td {
   #about {
     flex-direction: row;
     text-align: start;
-  }
+    .about-description {
+      width: 60%;
+    }
 
-  #about img {
-    width: 400px;
+    img {
+      width: 400px;
+    }
   }
 
   .reviews {
