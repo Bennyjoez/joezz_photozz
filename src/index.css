@@ -235,17 +235,22 @@ footer {
   padding: 30px;
   gap: 10px;
   font-family: "Courgette", cursive;
-}
-
-.service p {
-  text-align: left;
-  margin-block: 10px;
-}
-
-.service img {
-  border-radius: 5px;
-  background-color: gray;
-  width: min(300px, 90%);
+  
+  p {
+    text-align: left;
+    margin-block: 10px;
+  }
+  
+  .service-image {
+    height: 200px;
+    overflow-y: hidden;
+    
+    img {
+      background-color: gray;
+      width: min(300px, 90%);
+      margin: 0 auto;
+    }
+  }
 }
 
 .bookings-form-container {
@@ -396,6 +401,8 @@ footer {
   background-color: rgba(102, 51, 153, 0.2);
   border-radius: 10px;
   box-shadow: 8px 10px 6px 1px rgb(190 190 231);
+  display: grid;
+  place-items: center;
 }
 
 .review-profile {

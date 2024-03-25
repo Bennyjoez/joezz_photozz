@@ -9,7 +9,9 @@ interface Service {
 export default function Service({ title, description, img }: Service) {
   return (
     <div className="service">
-      <img src={img} alt="potrait" />
+      <div className="service-image">
+        <img src={img} alt="potrait" />
+      </div>
       <div>
         <h3 className="service-heading">{title}</h3>
         <p>{description}</p>
