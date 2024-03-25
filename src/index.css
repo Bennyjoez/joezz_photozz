@@ -271,7 +271,8 @@ footer {
 
   .contact-details-container {
     display: flex;
-    gap: 50px;
+    flex-direction: column;
+    gap: 10px;
 
     li {
       color: white;
@@ -529,12 +530,6 @@ td {
   border-bottom: 1px solid black;
 }
 
-@media only screen and (min-width: 1000px) {
-  .description {
-    font-size: 3rem;
-  }
-}
-
 @media only screen and (min-width: 300px) and (max-width: 350px) {
   .form-container {
     padding-top: 20px;
@@ -618,6 +613,13 @@ td {
     left: unset;
   }
 
+  .bookings-form-container {
+    .contact-details-container {
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+
   .profile-tile {
     max-width: 1200px;
     margin: 10px auto;
@@ -627,5 +629,18 @@ td {
   th,
   td {
     padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .description {
+    font-size: 3rem;
+  }
+
+  .bookings-form-container {
+    .contact-details-container {
+      flex-direction: row;
+      gap: 50px;
+    }
   }
 }
