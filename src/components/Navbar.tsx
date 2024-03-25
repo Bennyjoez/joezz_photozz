@@ -9,7 +9,6 @@ export default function Navbar() {
   // validate userToken
   useTokenValidityCheck();
   const location = useLocation().pathname;
-  console.log(location, "location")
   // if valid, get username
   const userName = useAppSelector((state) => state.user.name);
   return (

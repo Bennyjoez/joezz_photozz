@@ -5,6 +5,7 @@ import Services from "../components/services/Services";
 import About from "../components/About";
 import BookingForm from "../components/bookings/BookingPopup";
 import { useAppSelector } from "../app/hooks";
+import Gallery from "../components/gallery/Gallery";
 
 export default function Home() {
   const showPopup = useAppSelector((state) => state.modal.showPopup);
@@ -16,6 +17,7 @@ export default function Home() {
         <Services />
         <h2 className="heading">About Us</h2>
         <About />
+        <Gallery />
         <h2 className="heading">Reviews</h2>
         <Reviews />
         <h2 className="heading">Contact Us</h2>
