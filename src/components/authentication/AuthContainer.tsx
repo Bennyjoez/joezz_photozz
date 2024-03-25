@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 import { useAppSelector } from "../../app/hooks";
 import { Navigate } from "react-router-dom";
-import formImage from '../../../public/form.jpg';
+import formImage from '../../../public/joez_photozz_web/2.jpg';
 
 interface AuthContainerProps {
   children: ReactNode

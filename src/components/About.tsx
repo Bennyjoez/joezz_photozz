@@ -1,4 +1,4 @@
-import shootImage from '../../public/ladyshoot.jpeg';
+import shootImage from '../../public/joez_photozz_web/3.jpg';
 
 export default function About() {
   return (
