@@ -1,30 +1,13 @@
+import { Review } from './reviews/review';
 import profile from "/profile.png"
 
 export default function Reviews() {
   return (
     <section id='reviews-container'>
       <div className="reviews">
-        <div className='review'>
-          <img src={profile} className="review-profile" alt="reviewer" />
-          <div>
-            <h3>Benson Njuguna</h3>
-            <p>"These guys saved the day by covering my event and making it memorable to every detail"</p>
-          </div>
-        </div>
-        <div className='review'>
-          <img src={profile} className="review-profile" alt="reviewer" />
-          <div>
-            <h3>Benson Njuguna</h3>
-            <p>"These guys saved the day by covering my event and making it memorable to every detail"</p>
-          </div>
-        </div>
-        <div className='review'>
-          <img src={profile} className="review-profile" alt="reviewer" />
-          <div>
-            <h3>Benson Njuguna</h3>
-            <p>"These guys saved the day by covering my event and making it memorable to every detail"</p>
-          </div>
-        </div>
+        <Review   profile={profile}  />
+        <Review   profile={profile}  />
+        <Review   profile={profile}  />
       </div>
       <button className="book-session-btn ">Add Review</button>
     </section>
