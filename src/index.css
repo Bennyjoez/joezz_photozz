@@ -296,6 +296,42 @@ footer {
   }
 }
 
+.reviews-form-container {
+  background-color: #efefef;
+  padding: 20px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 1px 4px gray;
+
+  p {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: start;
+
+    input[type=text],
+    input[type=email] {
+      padding: 10px;
+    }
+
+    .rating-value {
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.must {
+  color: red;
+}
+
 .form-container {
   background-color: whitesmoke;
   border-radius: 20px;

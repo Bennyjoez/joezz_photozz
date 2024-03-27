@@ -7,7 +7,7 @@ interface modalState {
 
 const initialState: modalState = {
   showBookingsModal: false,
-  showReviewsModal: true,
+  showReviewsModal: false,
 };
 
 

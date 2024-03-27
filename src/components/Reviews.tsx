@@ -1,10 +1,14 @@
+import { showReviewsPopup } from '../Features/modal/modalSlice';
+import { useAppDispatch } from '../app/hooks';
 import { Review } from './reviews/review';
 import profile from "/profile.png"
 
 export default function Reviews() {
 
+  const dispatch = useAppDispatch();
+
   const handleClick = () => {
-    console.log("clicked")
+    dispatch(showReviewsPopup());
   }
 
   return (
