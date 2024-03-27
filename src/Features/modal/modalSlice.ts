@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface modalState {
-  showPopup: boolean
+  showBookingsModal: boolean
 }
 
 const initialState: modalState = {
-  showPopup: false
+  showBookingsModal: false
 };
 
 
@@ -13,16 +13,16 @@ export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    showPopup: (state) => {
-      state.showPopup = true
+    showBookingPopup: (state) => {
+      state.showBookingsModal = true
     },
-    closePopup: (state) => {
-      state.showPopup = false;
+    closeBookingPopup: (state) => {
+      state.showBookingsModal = false;
     }
   }
 });
 
-export const { showPopup, closePopup } = modalSlice.actions;
+export const { showBookingPopup, closeBookingPopup } = modalSlice.actions;
 
 export default modalSlice.reducer;
 

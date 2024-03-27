@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
-import { closePopup } from "../../Features/modal/modalSlice";
+import { closeBookingPopup } from "../../Features/modal/modalSlice";
 import DateSelector from "./DatePicker";
 import { toast } from "react-toastify";
 import handleErrors from "../../utils/handleErrors";
@@ -43,7 +43,7 @@ export default function BookingForm() {
       addBookingMutation.mutate(details);
 
       // Booking saved
-      dispatch(closePopup());
+      dispatch(closeBookingPopup());
       toast.success("Reserved your shoot date!");
     } catch (error: unknown) {
       // Handle non-successful response
@@ -60,7 +60,7 @@ export default function BookingForm() {
   };
 
   const onCloseButtonClick = () => {
-    dispatch(closePopup());
+    dispatch(closeBookingPopup());
   };
 
   return (

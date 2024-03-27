@@ -8,7 +8,7 @@ import { useAppSelector } from "../app/hooks";
 import Gallery from "../components/gallery/Gallery";
 
 export default function Home() {
-  const showPopup = useAppSelector((state) => state.modal.showPopup);
+  const showBookingsModal = useAppSelector((state) => state.modal.showBookingsModal);
   return (
     <>
       <div id="home">
@@ -23,7 +23,7 @@ export default function Home() {
         <h2 className="heading">Contact Us</h2>
         <ContactForm />
       </div>
-      {showPopup && <BookingForm />}
+      {showBookingsModal && <BookingForm />}
     </>
   );
 }

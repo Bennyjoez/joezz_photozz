@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useNavigate } from "react-router-dom";
-import { showPopup } from "../../Features/modal/modalSlice";
+import { showBookingPopup } from "../../Features/modal/modalSlice";
 import useTokenValidityCheck from "../../utils/useCustomValidityCheck";
 
 export default function BookBtn() {
@@ -20,7 +20,7 @@ export default function BookBtn() {
     bookSessionBtn.disabled = true;
     // If logged in, navigate to booking form else login/signup form
     if (userName) {
-      dispatch(showPopup());
+      dispatch(showBookingPopup());
     } else {
       toast("Please Login first!");
       navigate("/login");
