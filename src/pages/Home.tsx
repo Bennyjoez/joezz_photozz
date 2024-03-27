@@ -6,9 +6,11 @@ import About from "../components/About";
 import BookingForm from "../components/bookings/BookingPopup";
 import { useAppSelector } from "../app/hooks";
 import Gallery from "../components/gallery/Gallery";
+import AddReviewPopup from "../components/reviews/AddReviewPopup";
 
 export default function Home() {
   const showBookingsModal = useAppSelector((state) => state.modal.showBookingsModal);
+  const showReviewsModal = useAppSelector((state) => state.modal.showReviewsModal);
   return (
     <>
       <div id="home">
@@ -24,6 +26,7 @@ export default function Home() {
         <ContactForm />
       </div>
       {showBookingsModal && <BookingForm />}
+      {showReviewsModal && <AddReviewPopup />}
     </>
   );
 }
