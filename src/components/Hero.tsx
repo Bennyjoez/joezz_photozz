@@ -1,5 +1,4 @@
 import { Description } from './hero/Description';
-import BookBtn from "./bookings/BookBtn";
 
 export default function Hero() {
   return (
