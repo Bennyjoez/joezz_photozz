@@ -1,3 +1,4 @@
+import { Description } from './hero/Description';
 import BookBtn from "./bookings/BookBtn";
 
 export default function Hero() {
@@ -6,11 +7,7 @@ export default function Hero() {
       <div className="tile tilt-1"></div>
       <div className="tile tilt-2"></div>
       <div className="tile tilt-3"></div>
-      <div className="tile description animated-text">
-        <p>Mark all your events</p>
-        <h3>Anywhere, Everywhere, We are there</h3>
-        <BookBtn />
-      </div>
+      <Description     />
     </div>
   );
 }
