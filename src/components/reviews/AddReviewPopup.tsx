@@ -7,8 +7,6 @@ const AddReviewPopup = () => {
   const [details, setDetails] = useState({
     rating: "0",
     message: "",
-    name: "",
-    email: "",
   });
 
   const onCloseButtonClick = () => {
