@@ -61,32 +61,6 @@ const AddReviewPopup = () => {
             {((Number(details.rating) / 100) * 5).toFixed(1)} Stars
           </div>
 
-          <label htmlFor="name">
-            Name<span className="must">*</span>
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Enter your name"
-            onChange={handleInput}
-            value={details.name}
-            required
-          />
-
-          <label htmlFor="email">
-            Email<span className="must">*</span>
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter your email"
-            onChange={handleInput}
-            value={details.email}
-            required
-          />
-
           <button id="submit-review" type="submit" className="book-session-btn">
             Submit Review
           </button>
