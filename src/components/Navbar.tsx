@@ -4,13 +4,20 @@ import { Link, useLocation } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
 import { CgProfile } from "react-icons/cg";
 import useTokenValidityCheck from "../utils/useCustomValidityCheck";
+import { capitalize } from "../utils/module";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [greeting, setGreeting] = useState('Welcome,');
   // validate userToken
   useTokenValidityCheck();
   const location = useLocation().pathname;
   // if valid, get username
   const userName = useAppSelector((state) => state.user.name);
+
+  setTimeout(() => {
+    setGreeting('');
+  }, 10000)
   return (
     <section id="nav-container">
       <div className="navbar">
@@ -41,7 +48,7 @@ export default function Navbar() {
       </ul>
       {userName ? (
         <div className="profile-link">
-          <span>Welcome, {userName.toUpperCase()}</span>
+          <span>{greeting} {capitalize(userName)}</span>
           <Link to="/profile" className="link-btn">
             <CgProfile />
           </Link>

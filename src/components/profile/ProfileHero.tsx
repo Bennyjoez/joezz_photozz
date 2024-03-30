@@ -1,3 +1,5 @@
+import { capitalize } from "../../utils/module"
+
 interface profileHeroProps {
   name: string,
   email: string,
@@ -13,7 +15,7 @@ export function ProfileHero({
 }: profileHeroProps) {
   return (
     <div className="bg">
-      <p>Hello, {name.toUpperCase()}</p>
+      <p>Hello, {capitalize(name)}</p>
       <p>Email: {email}</p>
       <p>Contact: {contact}</p>
       <button id="logout" className="logout-btn" onClick={handleLogout}>
