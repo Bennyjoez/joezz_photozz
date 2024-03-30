@@ -5,6 +5,7 @@ import { clearUser } from "../Features/user/userSlice";
 import { useQuery } from "@tanstack/react-query";
 import { getUserBookings } from "../utils/bookingsEndpoints";
 import ErrorContainer from '../components/error/ErrorContainer';
+import Loading from '../components/loading/Loading';
 
 function Profile() {
   const dispatch = useAppDispatch();
@@ -40,7 +41,7 @@ function Profile() {
   }
 
   if (isPending) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (isError) {
