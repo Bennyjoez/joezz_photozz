@@ -1,10 +1,12 @@
 import { showReviewsPopup } from '../Features/modal/modalSlice';
-import { useAppDispatch } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { Review, reviewDataProps } from './reviews/review';
 import { getReviews } from '../utils/reviewsEndpoints';
 import { useQuery } from '@tanstack/react-query';
 import Loading from './loading/Loading';
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export default function Reviews() {
   const dispatch = useAppDispatch();
@@ -14,12 +16,20 @@ export default function Reviews() {
     enabled: false,
   });
 
+  const userName = useAppSelector((state) => state.user.name);
+  const navigate = useNavigate();
+
   useEffect(() => {
     refetch();
   }, [refetch])
 
   const handleClick = () => {
-    dispatch(showReviewsPopup());
+    if (userName) {
+      dispatch(showReviewsPopup());
+    } else {
+      toast("Please Login first!");
+      navigate("/login");
+    }
   }
 
   if(isPending) {
@@ -35,7 +45,7 @@ export default function Reviews() {
   return (
     <section id='reviews-container'>
       {
-        !reviews
+        !reviews || reviews === undefined
         ?
         <div>No reviews yet!</div>
         :
