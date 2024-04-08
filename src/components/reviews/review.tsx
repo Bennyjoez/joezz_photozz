@@ -13,6 +13,14 @@ interface ReviewProps {
   reviewData: reviewDataProps;
 }
 
+function truncateText(text: string, maxLength: number) {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + '...';
+  } else {
+    return text;
+  }
+}
+
 export function Review({ reviewData }: ReviewProps) {
   const { comment, date, rating, reviewer } = reviewData;
 
@@ -20,11 +28,11 @@ export function Review({ reviewData }: ReviewProps) {
 
   return (
     <div className="review">
+      <span className='quotation-mark'>"</span>
       <div className='review-comment'>
-        <span className='quotation-mark'>"</span>
-        <p>"{comment}"</p>
-        <Rating rating={rating} />
+        <p>"{truncateText(comment, 60)}"</p>
       </div>
+      <Rating rating={rating} />
       <div className="reviewer">
         <h3>{named}</h3>
         <h4>{new Date(date).toDateString()}</h4>
