@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { closeReviewsPopup } from "../../Features/modal/modalSlice";
 import { useAppDispatch } from "../../app/hooks";
+import { addReview, detailsProps } from "../../utils/reviewsEndpoints";
+import { toast } from "react-toastify";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const AddReviewPopup = () => {
   const dispatch = useAppDispatch();
+  const queryClient = useQueryClient();
+
   const [details, setDetails] = useState({
     rating: "0",
     message: "",
@@ -13,9 +18,26 @@ const AddReviewPopup = () => {
     dispatch(closeReviewsPopup());
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const addReviewMutation = useMutation({
+    mutationFn: (details: detailsProps) => addReview(details) 
+  })
+
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log("submiting", details);
+    if (!details.rating || !details.message) {
+      toast.error("Please fill out all required fields.");
+      return;
+    }
+  
+    try {
+      addReviewMutation.mutate(details)
+      toast.success("Review will be added soon");
+      queryClient.invalidateQueries({ queryKey: ["reviews"] });
+      dispatch(closeReviewsPopup());
+    } catch (err) {
+      console.error("An error occurred while adding the review:", err);
+      toast.error("An error occurred while adding the review. Please try again later.");
+    }
   };
 
   const handleInput = (e: { target: { name: string; value: string } }) => {
@@ -51,12 +73,14 @@ const AddReviewPopup = () => {
             type="range"
             name="rating"
             id="rating"
+            min='0'
+            max='5'
+            step='0.1'
             onChange={handleInput}
             value={details.rating}
-            required
           />
           <div className="rating-value">
-            {((Number(details.rating) / 100) * 5).toFixed(1)} Stars
+            {details.rating} Stars
           </div>
 
           <button id="submit-review" type="submit" className="book-session-btn">
