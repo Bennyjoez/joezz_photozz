@@ -417,10 +417,18 @@ footer {
 .reviews {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 20px;
+  padding-left: 20px;
   text-align: center;
+  width: 96%;
   margin-bottom: 20px;
+  overflow-x: auto;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.reviews::-webkit-scrollbar {
+  display: none;
 }
 
 .review {
