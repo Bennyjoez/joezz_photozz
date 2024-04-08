@@ -449,12 +449,17 @@ footer {
   }
 
   .review-comment {
-    .quotation-mark {
-      font-weight: 600;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 1.8rem;
-      width: 100%;
-    }
+    flex: 1;
+    display: grid;
+    place-items: center;
+    text-align: center;
+  }
+
+  .quotation-mark {
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.8rem;
+    width: 100%;
   }
 }
 
@@ -598,6 +603,7 @@ td {
 
 .rating {
   font-size: 24px;
+  margin-top: auto;
   
   .star-filled {
     color: rgb(192, 164, 7);
