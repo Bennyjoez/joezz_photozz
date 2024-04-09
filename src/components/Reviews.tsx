@@ -1,10 +1,10 @@
 import { showReviewsPopup } from '../Features/modal/modalSlice';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { Review, reviewDataProps } from './reviews/review';
+import { Review, reviewDataProps } from './reviews/Review';
 import { getReviews } from '../utils/reviewsEndpoints';
 import { useQuery } from '@tanstack/react-query';
 import Loading from './loading/Loading';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,6 +17,7 @@ export default function Reviews() {
   });
 
   const userName = useAppSelector((state) => state.user.name);
+  const [targetReview, setTargetReview] = useState<reviewDataProps | undefined>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,15 +46,23 @@ export default function Reviews() {
   return (
     <section id='reviews-container'>
       {
+        targetReview
+        &&
+        <div className='expanded'>
+          {/* floating review */}
+          <Review reviewData={targetReview} expanded={true} />
+        </div>
+      }
+      {
         !reviews || reviews === undefined
         ?
         <div>No reviews yet!</div>
         :
         <div className="reviews">
-        {reviews.map((review: reviewDataProps) => (
-          <Review key={review._id} reviewData={review} />
-        ))}
-      </div>
+          {reviews.map((review: reviewDataProps) => (
+            <Review key={review._id} reviewData={review} setTargetReview={setTargetReview} />
+          ))}
+        </div>
       }
       <button className="book-session-btn" onClick={handleClick}>Add Review</button>
     </section>
