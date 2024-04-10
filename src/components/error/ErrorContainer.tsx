@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import errorImg from "../../../public/page-not-found.svg";
+import errorImg from "/page-not-found.svg";
 
 interface ErrorContainerProps {
   children: ReactNode;

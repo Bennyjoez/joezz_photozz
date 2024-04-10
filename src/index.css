@@ -155,7 +155,7 @@ footer {
   left: -3px;
   background-color: purple;
   z-index: 2;
-  background: url("/public/landscape.jpg");
+  background: url("/landscape.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -248,7 +248,7 @@ footer {
 }
 
 .bookings-form-container {
-  background: url('../public/book.jpg');
+  background: url('/book.jpg');
   background-size: cover;
   display: flex;
   flex-direction: column;
