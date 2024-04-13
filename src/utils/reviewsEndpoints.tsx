@@ -11,7 +11,7 @@ export const getReviews = async () => {
     const reviews = await axiosInstance.get(endPoint);
     return reviews;
   } catch (err) {
-    console.log(err)
+    console.error(err)
     if (err.message == "Network Error") {
       throw new Error("Waiting for a reconnection!🌐")
     } else {
