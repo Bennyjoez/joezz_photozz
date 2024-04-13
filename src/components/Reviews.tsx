@@ -15,6 +15,7 @@ export default function Reviews() {
     queryFn: () => getReviews(),
     enabled: false,
   });
+  const [reviews, setReviews] = useState([]);
 
   const userName = useAppSelector((state) => state.user.name);
   const [targetReview, setTargetReview] = useState<reviewDataProps | undefined>();
@@ -23,6 +24,14 @@ export default function Reviews() {
   useEffect(() => {
     refetch();
   }, [refetch])
+
+  useEffect(() => {
+    console.log("Called")
+    if (data?.data.data) {
+      setReviews(data?.data.data)
+    }
+  }, [data?.data.data])
+
 
   const handleClick = () => {
     if (userName) {
@@ -41,8 +50,6 @@ export default function Reviews() {
     return <div>{error.message}</div>;
   }
 
-  const reviews = data?.data.data;
-
   return (
     <section id='reviews-container'>
       {
@@ -54,7 +61,7 @@ export default function Reviews() {
         </div>
       }
       {
-        !reviews || reviews === undefined
+        !reviews
         ?
         <div>No reviews yet!</div>
         :

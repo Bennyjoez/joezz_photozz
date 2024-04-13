@@ -12,6 +12,11 @@ export const getReviews = async () => {
     return reviews;
   } catch (err) {
     console.log(err)
+    if (err.message == "Network Error") {
+      throw new Error("Waiting for a reconnection!🌐")
+    } else {
+      throw new Error(err.message)
+    }
   }
 };
 
