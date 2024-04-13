@@ -43,6 +43,14 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    // execute on location change
+    if(window.innerWidth <= 767) {
+      setShowNavOptions(false)
+      setClosedNavOptions(true)
+    }
+  }, [location])
+
   return (
     <section id="nav-container">
       <div className="navbar">
