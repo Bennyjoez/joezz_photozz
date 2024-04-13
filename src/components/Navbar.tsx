@@ -1,6 +1,6 @@
 import logo from "/logo.png";
 import { ImWhatsapp } from "react-icons/im";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
 import { CgProfile } from "react-icons/cg";
 import useTokenValidityCheck from "../utils/useCustomValidityCheck";
@@ -59,15 +59,15 @@ export default function Navbar() {
             <img src={logo} alt="Logo" />
           </Link>
         </div>
-        <ul className={showNavOptions ? "nav-options" : "nav-options, hide"}>
+        <ul className={showNavOptions ? "nav-options" : "nav-options hide"}>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink to="/about">About</NavLink>
           </li>
           <li>
-            <Link to="services">Services</Link>
+            <NavLink to="services">Services</NavLink>
           </li>
           <li>
             <Link

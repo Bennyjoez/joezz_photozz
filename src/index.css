@@ -75,6 +75,11 @@ footer {
     &:hover {
       background-color: gray;
     }
+
+    a.active {
+      color: blue;
+      font-weight: bold;
+    }
   }
 }
 
