@@ -143,6 +143,18 @@ footer {
   text-align: center;
 }
 
+.arrow-down {
+  position: absolute;
+  bottom: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  color: #c7421a;
+  font-weight: bold;
+  z-index: 11;
+  animation: bounce 2s infinite ;
+}
+
 .animated-text {
   opacity: 0;
   transform: translateY(20px);
@@ -157,6 +169,17 @@ footer {
   to {
     opacity: 1;
     transform: translateY(-50%);
+  }
+}
+
+@keyframes bounce {
+  from {
+    opacity: 0.1;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(30px);
   }
 }
 

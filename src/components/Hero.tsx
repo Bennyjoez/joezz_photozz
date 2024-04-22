@@ -1,4 +1,5 @@
 import { Description } from './hero/Description';
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 
 export default function Hero() {
   return (
@@ -7,6 +8,7 @@ export default function Hero() {
       <div className="tile tilt-2"></div>
       <div className="tile tilt-3"></div>
       <Description     />
+      <MdKeyboardDoubleArrowDown className='arrow-down' />
     </div>
   );
 }
