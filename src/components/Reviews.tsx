@@ -26,7 +26,6 @@ export default function Reviews() {
   }, [refetch])
 
   useEffect(() => {
-    console.log("Called")
     if (data?.data.data) {
       setReviews(data?.data.data)
     }
