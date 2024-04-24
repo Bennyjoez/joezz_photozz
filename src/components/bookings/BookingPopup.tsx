@@ -66,6 +66,7 @@ export default function BookingForm() {
   return (
     <section className="popup-form">
       <div className="bookings-form-container">
+        <h1 className="heading bookings-heading">Create a Booking</h1>
         <form onSubmit={handleSubmit} className="signup-form">
           <div className="flex-form">
             <label htmlFor="event">Event</label>

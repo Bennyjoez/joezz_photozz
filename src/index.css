@@ -115,6 +115,12 @@ footer {
   margin-top: 50px;
 }
 
+.bookings-heading {
+  color: #efefef;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
 .service-heading {
   text-decoration: underline;
   text-decoration-color: #c7421a;
@@ -296,6 +302,7 @@ footer {
 .bookings-form-container {
   background: url('/book.jpg');
   background-size: cover;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
