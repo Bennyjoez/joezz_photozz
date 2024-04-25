@@ -48,7 +48,7 @@ export default function Form() {
 
 
   return (
-    <section id='contact' className="bookings-form-container">
+    <section id='contact' className="contact-form-container">
       <ul className='contact-details-container'>
         <li className='contact-details'>
           <span className='contact-icon'>

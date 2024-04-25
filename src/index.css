@@ -299,10 +299,10 @@ footer {
   }
 }
 
-.bookings-form-container {
+.bookings-form-container,
+.contact-form-container {
   background: url('/book.jpg');
   background-size: cover;
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -348,6 +348,10 @@ footer {
       }
     }
   }
+}
+
+.booking-form-container {
+  border-radius: 20px;
 }
 
 .reviews-form-container {
@@ -399,7 +403,8 @@ footer {
 }
 
 .form-container input,
-.bookings-form-container input, textarea {
+.bookings-form-container input, textarea,
+.contact-form-container input, textarea {
   box-shadow: 0 1px 2px gray;
   padding: 10px 20px;
   border-radius: 5px;
@@ -776,7 +781,7 @@ td {
     left: unset;
   }
 
-  .bookings-form-container {
+  .contact-form-container {
     .contact-details-container {
       flex-direction: row;
       gap: 20px;
@@ -800,7 +805,7 @@ td {
     font-size: 3rem;
   }
 
-  .bookings-form-container {
+  .contact-form-container {
     .contact-details-container {
       flex-direction: row;
       gap: 50px;
