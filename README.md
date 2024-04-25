@@ -12,6 +12,12 @@
 6. Upload pictures for edits.
 
 
+## Bugs
+
+- Show the warnings of an already selected date
+- Make the 
+
+
 ## Rules of Engagement
 1. A client needs to be logged in to make a booking. 
 2. A client needs to be logged in to submit a review.
