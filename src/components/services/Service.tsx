@@ -1,14 +1,23 @@
+import { useEffect, useState } from "react";
 import BookBtn from "../bookings/BookBtn";
 
 interface Service {
   title: string;
   description: string;
   img: string;
+  count: number;
 }
 
-export default function Service({ title, description, img }: Service) {
+export default function Service({ title, description, img, count }: Service) {
+  const [serviceClass, setServiceClass] = useState("");
+
+  useEffect(() => {
+    const res = count % 2 === 0 ? "even-service" : "odd-service";
+    setServiceClass(res);
+  }, [count]);
+
   return (
-    <div className="service">
+    <div className={`service ${serviceClass}`}>
       <div className="service-image">
         <img src={img} alt="potrait" />
       </div>

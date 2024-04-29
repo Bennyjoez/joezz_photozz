@@ -766,12 +766,18 @@ td {
   }
 
   .services {
-    flex-direction: row;
+    flex-direction: column;
     align-items: normal;
   }
 
   .service {
-    width: 30%;
+    /* width: 30%; */
+    display: flex;
+    flex-direction: row;
+  }
+
+  .even-service {
+    flex-direction: row-reverse;
   }
 
   #about {
