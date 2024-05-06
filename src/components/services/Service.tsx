@@ -24,8 +24,8 @@ export default function Service({ title, description, img, count }: Service) {
       <div>
         <h3 className="service-heading">{title}</h3>
         <p>{description}</p>
+        <BookBtn />
       </div>
-      <BookBtn />
     </div>
   );
 }
