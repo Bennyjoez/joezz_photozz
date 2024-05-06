@@ -315,6 +315,136 @@ body {
   }
 }
 
+.services-page-hero {
+  position: absolute;
+  background: #efefef;
+  width: 80%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px 2px #4052b2;
+  display: grid;
+  overflow: hidden;
+
+  aside {
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+
+    &:first-child {
+
+      .services-description {
+        width: 350px;
+        font-family: "Playfair Display", serif;
+        font-optical-sizing: auto;
+        font-weight: 900;
+        font-style: normal;
+      }
+      
+      p {
+        color: rgb(29, 29, 29);
+        font-size: 32px;
+        text-transform: uppercase;
+
+        span {
+          color: #4052b2;
+        }
+      }
+    }
+
+    &:last-child {
+      >div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        perspective: 1000px;
+      
+        
+        .service {
+          flex-direction: column;
+          max-height: 300px;
+          max-width: 200px;
+          box-shadow: none;
+
+          &:hover {
+            animation: none;
+            z-index: 10;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    @media (width > 1280px) {
+      grid-template-columns: repeat(2, 1fr);
+
+      aside {
+        &:last-child {
+          >div {
+            .service {
+              max-width: 250px;
+            }
+          }
+        }
+      }
+    }
+
+    aside {
+      &:last-child {
+        >div {
+          .service {
+            animation: shuffle 8s ease-in-out infinite alternate;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes shuffle {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg); 
+  }
+  25% {
+    transform: translateX(50px) translateY(0) rotate(5deg);
+  }
+  50% {
+    transform: translateX(-50px) translateY(50px) rotate(-5deg);
+  }
+  75% {
+    transform: translateX(0) translateY(-50px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+}
+
+.bg-container {
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 70px);
+
+  * {
+    flex: 1;
+    
+    &:first-child {
+      background-color: #4052b2;
+    }
+    
+    &:last-child {
+      background-color: #efefef;
+    }
+  }
+  
+}
+
+
 .bookings-form-container,
 #contact {
   background: url('/book.jpg');
