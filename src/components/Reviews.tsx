@@ -18,7 +18,6 @@ export default function Reviews() {
   const [reviews, setReviews] = useState([]);
 
   const userName = useAppSelector((state) => state.user.name);
-  const [targetReview, setTargetReview] = useState<reviewDataProps | undefined>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -52,21 +51,13 @@ export default function Reviews() {
   return (
     <section id='reviews-container'>
       {
-        targetReview
-        &&
-        <div className='expanded'>
-          {/* floating review */}
-          <Review reviewData={targetReview} expanded={true} />
-        </div>
-      }
-      {
         !reviews
         ?
         <div>No reviews yet!</div>
         :
         <div className="reviews">
           {reviews.map((review: reviewDataProps) => (
-            <Review key={review._id} reviewData={review} setTargetReview={setTargetReview} />
+            <Review key={review._id} reviewData={review} />
           ))}
         </div>
       }
