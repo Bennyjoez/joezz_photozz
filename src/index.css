@@ -471,6 +471,7 @@ body {
 }
 
 .contact-form-container {
+  margin: 0 auto;
   display: flex;
   gap: 20px;
   flex-direction: column-reverse;
@@ -484,12 +485,15 @@ body {
     padding: 20px;
     color: white;
     backdrop-filter: blur(10px);
-    width: 100%;
     display: flex;
     align-items: center;
     gap: 30px;
     display: flex;
     flex-direction: column;
+
+    .footer-description {
+      text-align: center;
+    }
     
     ul {
       list-style: none;
@@ -500,6 +504,10 @@ body {
       height: 200px;
       display: grid;
       place-items: center;
+
+      h2 {
+        text-align: center;
+      }
     }
 
     .heading {
@@ -514,20 +522,16 @@ body {
 }
 
 .contact-details-container {
+  padding: 0;
   a {
+    font-style: italic;
     text-decoration: none;
     color: white;
 
     &:hover {
       text-decoration: underline;
-
     }
   }
-}
-
-#contact {
-  display: grid;
-  place-items: center;
 }
 
 .reviews-form-container {
@@ -550,7 +554,8 @@ body {
     text-align: start;
 
     input[type=text],
-    input[type=email] {
+    input[type=email],
+    textarea {
       padding: 10px;
     }
 
@@ -558,6 +563,14 @@ body {
       text-align: center;
       font-weight: 900;
       font-size: 1.2rem;
+    }
+
+    .characters {
+      display: flex;
+
+      .char-count {
+        margin-left: auto;
+      }
     }
   }
 }
@@ -643,22 +656,22 @@ body {
 
 #reviews-container {
   margin: 0 auto;
-  max-width: 1280px;
-  padding: 40px;
+  padding: 20px;
   background-color: #efefef;
   border-radius: 20px;
-  position: relative;
+
+  @media only screen and (min-width: 768px) {
+    padding: 40px;
+  }
 }
 
 .reviews {
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
   text-align: center;
-  width: 96%;
   margin-bottom: 20px;
   overflow-x: auto;
-  overflow: auto;
+  overflow: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -670,15 +683,13 @@ body {
 .review {
   padding: 20px;
   margin: 0 auto;
-  width: min(500px, 90%);
   border-radius: 4px;
   background-color: rgba(102, 51, 153, 0.2);
   border-radius: 10px;
-  box-shadow: 8px 10px 6px 1px rgb(190 190 231);
+  box-shadow: 3px 5px 6px 1px rgb(190 190 231);
   display: flex;
   flex-direction: column;
-  justify-items: center;
-  cursor: zoom-in;
+  width: 96%;
 
   .reviewer {
     font-size: 10px;
@@ -698,15 +709,10 @@ body {
     font-size: 1.8rem;
     width: 100%;
   }
-}
 
-.expanded {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 20px;
-  backdrop-filter: blur(10px);
-  padding: 10px;
+  @media only screen and (min-width: 768px) {
+    min-width: fit-content;
+  }
 }
 
 .review-profile {
@@ -983,7 +989,15 @@ td {
     flex-direction: row;
 
     .footer {
+      width: 50vw;
       flex-direction: row;
+      .footer-description {
+        text-align: initial;
+      }
+    }
+
+    .contact-details-container {
+      padding-left: 40px;
     }
   }
 }

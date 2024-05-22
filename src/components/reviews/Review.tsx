@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-import { capitalize } from '../../utils/module';
-import { Rating } from './rating';
+import { capitalize } from "../../utils/module";
+import { Rating } from "./rating";
 
 export interface reviewDataProps {
   comment: string;
@@ -12,57 +11,19 @@ export interface reviewDataProps {
 
 interface ReviewProps {
   reviewData: reviewDataProps | undefined;
-  setTargetReview?: (value: reviewDataProps | undefined) => void;
-  expanded?: boolean;
 }
 
-function truncateText(text: string, maxLength: number) {
-  if (text.length > maxLength) {
-    return text.substring(0, maxLength) + '...';
-  } else {
-    return text;
-  }
-}
-
-export function Review({ reviewData, setTargetReview, expanded }: ReviewProps) {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 600);
-    };
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
+export function Review({ reviewData }: ReviewProps) {
   if (!reviewData) return null;
   const { comment, date, rating, reviewer } = reviewData;
 
   const named = reviewer ? capitalize(reviewer) : "Anonymous";
 
-  const handleMouseEnter = () => {
-    if (!isMobile) {
-      setTargetReview?.(reviewData);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!isMobile) {
-      setTargetReview?.(undefined);
-    }
-  };
-
   return (
-    <div
-      className="review"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="review">
       <span className="quotation-mark">"</span>
       <div className="review-comment">
-        {expanded || isMobile ? <p>{comment}</p> : <p>"{truncateText(comment, 60)}"</p>}
+        <p>{comment}</p>
       </div>
       <Rating rating={rating} />
       <div className="reviewer">
