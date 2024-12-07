@@ -1,5 +1,4 @@
 import Hero from "../components/Hero";
-import Reviews from "../components/Reviews";
 import Services from "../components/services/Services";
 import About from "../components/About";
 import BookingForm from "../components/bookings/BookingPopup";
@@ -21,8 +20,6 @@ export default function Home() {
         <h2 className="heading">About Us</h2>
         <About />
         <Gallery />
-        <h2 className="heading">Reviews</h2>
-        <Reviews />
         <h2 className="heading">Contact Us</h2>
         <Suspense fallback={<div>Loading...</div>}>
           <ContactForm />
